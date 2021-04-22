@@ -1,6 +1,7 @@
 /** @file */
 #include <iostream>
 
+using namespace std;
 /**
  * \brief   The function bar.
  *
@@ -26,6 +27,24 @@ void fn(){
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+	int userChoice;
+	cout << "1. Display files" << endl;
+	cout << "2. Modify files" << endl;
+	cout << "3. Process files" << endl;
+	cin >> userChoice;
+	
+	switch(userInput){
+			case 0:
+				break;
+			case 1:	
+				
+				break;
+			case 2:
+
+				break;
+			default:
+				cout << "Please enter a valid option!" << endl;
+		}
+	//cout << "Hello, World!" << endl;
+	return 0;
 }
