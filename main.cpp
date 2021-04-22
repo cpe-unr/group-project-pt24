@@ -1,4 +1,9 @@
 /** @file */
+
+//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Group Project
+//4/22/2021
+
 #include <iostream>
 
 using namespace std;
@@ -28,23 +33,41 @@ void fn(){
 
 int main() {
 	int userChoice;
+	string fileChoice;
 	cout << "1. Display files" << endl;
 	cout << "2. Modify files" << endl;
 	cout << "3. Process files" << endl;
 	cin >> userChoice;
 	
-	switch(userInput){
-			case 0:
-				break;
-			case 1:	
+	switch(userChoice){
+		case 0:
+			break;
+		case 1:	
 				
-				break;
-			case 2:
-
-				break;
-			default:
-				cout << "Please enter a valid option!" << endl;
-		}
+			break;
+		case 2:
+			break;
+		default:
+			cout << "Please enter a valid option!" << endl;
+	}
 	//cout << "Hello, World!" << endl;
+	Wav wav;
+	wav.readFile(fileChoice);
+	Processor *processor = new Echo(10);
+	processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
+	wav.writeFile(echofile);
+	delete processor;
+
+	wav.readFile(fileChoice);
+	Processor *limit = new Limiter();
+	limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
+	wav.writeFile(limitfile);
+	delete limit;
+
+	wav.readFile(fileChoice);
+	Processor *noise = new NoiseGate();
+	noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
+	wav.writeFile(noisefile);
+	delete noise;
 	return 0;
 }
