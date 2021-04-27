@@ -1,31 +1,26 @@
-//
-// Created by Keith Lancaster on 3/13/21.
-//
+//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Group Project
+//4/27/2021
 
-#ifndef PROGRAMMING_ASSIGNMENT_3KL_WAV_H
-#define PROGRAMMING_ASSIGNMENT_3KL_WAV_H
+//for only 8bit mono so far...
 
-/*
- * This class is designed to work with PCM 8-bit mono wavefiles.
- * It makes many assumptions about the format of the wave as a result.
- * It will NOT work with stereo files or any other bit-depth than 8 bits.
- */
+#ifndef WAV_H
+#define WAV_H
+
 #include "WaveHeader.h"
 
-class Wav {
+class Wav{
+	unsigned char* buffer = NULL;
+	wav_header waveHeader;
 public:
-    void readFile(const std::string &fileName);
-    void writeFile(const std::string &outFileName);
-private:
-    unsigned char* buffer = NULL;
-    wav_header waveHeader;
-public:
-    virtual ~Wav();
+	void readFile(const std::string &fileName);
+	void writeFile(const std::string &outFileName);
 
-public:
-    unsigned char *getBuffer();
-    int getBufferSize() const;
+	unsigned char *getBuffer();
+	int getBufferSize() const;
+
+	virtual ~Wav();	
 };
 
 
-#endif //PROGRAMMING_ASSIGNMENT_3KL_WAV_H
+#endif //WAV_H
