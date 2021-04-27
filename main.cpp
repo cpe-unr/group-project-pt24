@@ -52,22 +52,22 @@ int main() {
 	}
 	//cout << "Hello, World!" << endl;
 	Wav wav;
-	wav.readFile(fileChoice);
-	Processor *processor = new Echo(10);
-	processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
-	wav.writeFile(echofile);
-	delete processor;
+//	wav.readFile(fileChoice);
+//	Processor *processor = new Echo(10);
+//	processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
+//	wav.writeFile(echofile);
+//	delete processor;
 
-	wav.readFile(fileChoice);
-	Processor *limit = new Limiter();
-	limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
-	wav.writeFile(limitfile);
-	delete limit;
+//	wav.readFile(fileChoice);
+//	Processor *limit = new Limiter();
+//	limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
+//	wav.writeFile(limitfile);
+//	delete limit;
 
-	wav.readFile(fileChoice);
-	Processor *noise = new NoiseGate();
-	noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
-	wav.writeFile(noisefile);
-	delete noise;
+//	wav.readFile(fileChoice);
+//	Processor *noise = new NoiseGate();
+//	noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
+//	wav.writeFile(noisefile);
+//	delete noise;
 	return 0;
 }
