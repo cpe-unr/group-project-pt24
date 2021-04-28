@@ -34,18 +34,20 @@ void fn(){
 int main() {
 	int userChoice;
 	string fileChoice;
-	cout << "1. Display files" << endl;
-	cout << "2. Modify files" << endl;
-	cout << "3. Process files" << endl;
+	cout << "Please choose from one of the options below" << endl;
+	cout << "1. Metadata" << endl;
+	cout << "2. Audio Processors" << endl;
+	cout << "3. Generate CSV " << endl;
 	cin >> userChoice;
 	
 	switch(userChoice){
-		case 0:
+		case 1:
+			subMenuMD();
 			break;
-		case 1:	
-				
+		case 2:	
+			subMenuAP()	
 			break;
-		case 2:
+		case 3:
 			break;
 		default:
 			cout << "Please enter a valid option!" << endl;
@@ -71,3 +73,5 @@ int main() {
 //	delete noise;
 	return 0;
 }
+void subMenuMD();
+void subMenuAP();
