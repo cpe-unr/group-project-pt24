@@ -5,8 +5,15 @@
 //4/22/2021
 
 #include <iostream>
+#include <string>
+#include <boost/filesystem.hpp>
 
+using namespace boost::filesystem;
 using namespace std;
+
+void subMenuMD();
+void subMenuAP();
+bool noneOfTheCurrentFiles(string newFile);
 /**
  * \brief   The function bar.
  *
@@ -33,7 +40,6 @@ void fn(){
 
 int main() {
 	int userChoice;
-	string fileChoice;
 	cout << "Please choose from one of the options below" << endl;
 	cout << "1. Metadata" << endl;
 	cout << "2. Audio Processors" << endl;
@@ -53,25 +59,126 @@ int main() {
 			cout << "Please enter a valid option!" << endl;
 	}
 	//cout << "Hello, World!" << endl;
-	Wav wav;
-//	wav.readFile(fileChoice);
-//	Processor *processor = new Echo(10);
-//	processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
-//	wav.writeFile(echofile);
-//	delete processor;
-
-//	wav.readFile(fileChoice);
-//	Processor *limit = new Limiter();
-//	limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
-//	wav.writeFile(limitfile);
-//	delete limit;
-
-//	wav.readFile(fileChoice);
-//	Processor *noise = new NoiseGate();
-//	noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
-//	wav.writeFile(noisefile);
-//	delete noise;
+	
 	return 0;
 }
-void subMenuMD();
-void subMenuAP();
+void subMenuMD() {
+	int userChoiceMD;
+	cout << "Please choose from one of the options below" << endl;
+	cout << "1. View metaData" << endl;
+	cout << "2. Modify metadata" << endl;
+	cout << "3. Exit" << endl;
+	cin >> userChoiceMD;
+	switch(userChoiceMD){
+		case 1:
+			viewMetadata(chosenFile());
+			break;
+		case 2:	
+			editMetaData(chosenFile());	
+			break;
+		case 3:		
+			break;
+		default:
+			cout << "Please enter a valid option!" << endl;
+	}
+}
+void subMenuAP() {
+	int userChoiceAP;
+	string newFile = " ";
+	cout << "Please choose from one of the options below" << endl;
+	cout << "1. Normalize" << endl;
+	cout << "2. Noise Gate" << endl;
+	cout << "3. Echo" << endl;
+	cout << "4. Limit" << endl;
+	cout << "5. Exit" << endl;
+	cin >> userChoiceAP;
+	Wav wav;
+	switch(userChoiceAP){
+		case 1:
+			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//Processor *normalize = new Normalize();
+			//normalize->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			//while(noneOfTheCurrentFiles(newFile)) {
+				//cout << "Please enter new file name" << endl;
+				//cin >> newFile;
+			//}}
+			//wav.writeFile(newFile);
+			//delete normalize;
+			break;
+		case 2:	
+			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//Processor *noise = new NoiseGate();
+			//noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			//while(noneOfTheCurrentFiles(newFile)) {
+				//cout << "Please enter new file name" << endl;
+				//cin >> newFile;
+			//}}
+			//wav.writeFile(newFile);
+			//delete noise;	
+			break;
+		case 3:
+			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//Processor *processor = new Echo(10);
+			//processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			//while(noneOfTheCurrentFiles(newFile)) {
+				//cout << "Please enter new file name" << endl;
+				//cin >> newFile;
+			//}}
+			//wav.writeFile(newFile);
+			//delete processor;
+			break;
+		case 4:
+			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//Processor *limit = new Limiter();
+			//limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			//while(noneOfTheCurrentFiles(newFile)) {
+				//cout << "Please enter new file name" << endl;
+				//cin >> newFile;
+			//}}
+			//wav.writeFile(newFile);
+			//delete limit;
+			break;
+		case 5:
+			break;
+		default:
+			cout << "Please enter a valid option!" << endl;
+	}
+}
+bool noneOfTheCurrentFiles(string newFile) {
+    path p("/home/nikhilsharma/CS202/group-project-pt24/test");
+    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
+        if (!is_directory(i->path())) {
+            if(newFile == i->path().filename().string()) {
+	    	return true;
+            }
+	    else {
+		return false;
+	    }
+	}
+        else
+            continue;
+    }
+}
+string chosenFile() {
+	int chosenFileNum;
+	string chosenFile;
+	cout << "Please choose from the files below." << endl;
+    path p("/home/nikhilsharma/CS202/group-project-pt24/test");
+    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
+        if (!is_directory(i->path())) {
+            cout << i << ". " << i->path().filename().string() << endl;
+	}
+        else
+            continue;
+    }	
+	cin >> chosenFileNum;
+    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
+        if (!is_directory(i->path())) {
+            if(i == chosenFileNum) [
+		chosenFile = i->path().filename().string();
+	}
+        else
+            continue;
+    }
+	return chosenFile;
+}
