@@ -32,8 +32,6 @@ public:
 	
 	std::string getComments();
 	void setComments(std::string);
-
-	void testValues();
 };
 
 #endif

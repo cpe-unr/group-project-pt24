@@ -2,9 +2,6 @@
 //Group Project
 //4/27/2021
 
-//don't know if we need to accomodate for mono or stereo here
-//if so, idk how
-
 #include <string>
 #include <fstream>
 #include <iostream>
