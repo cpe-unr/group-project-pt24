@@ -11,13 +11,19 @@
 
 class Wav{
 	unsigned char* buffer = NULL;
+	short* shortBuffer = NULL;
 	wav_header waveHeader;
+	short bitType;
 public:
 	void readFile(const std::string &fileName);
 	void writeFile(const std::string &outFileName);
 
 	unsigned char *getBuffer();
+	short *getShortBuffer();
 	int getBufferSize() const;
+
+	short getBitType();
+	void setBitType(short);
 
 	virtual ~Wav();	
 };
