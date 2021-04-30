@@ -6,6 +6,9 @@
 
 #include <iostream>
 #include <string>
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
 #include <boost/filesystem.hpp>
 
 using namespace boost::filesystem;
@@ -39,6 +42,7 @@ void fn(){
 }
 
 int main() {
+    // Uncomment these lines when ready.
 	int userChoice;
 	cout << "Please choose from one of the options below" << endl;
 	cout << "1. Metadata" << endl;
@@ -83,6 +87,10 @@ void subMenuMD() {
 	}
 }
 void subMenuAP() {
+	char cwd[PATH_MAX];
+	getcwd(cwd, sizeof(cwd));
+	std::string sfile = "/test/";
+        std::string fileDir = cwd+sfile;
 	int userChoiceAP;
 	string newFile = " ";
 	cout << "Please choose from one of the options below" << endl;
@@ -95,7 +103,7 @@ void subMenuAP() {
 	Wav wav;
 	switch(userChoiceAP){
 		case 1:
-			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//wav.readFile(fileDir + chosenFile());
 			//Processor *normalize = new Normalize();
 			//normalize->processBuffer(wav.getBuffer(), wav.getBufferSize());
 			//while(noneOfTheCurrentFiles(newFile)) {
@@ -106,7 +114,7 @@ void subMenuAP() {
 			//delete normalize;
 			break;
 		case 2:	
-			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//wav.readFile(fileDir + chosenFile());
 			//Processor *noise = new NoiseGate();
 			//noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
 			//while(noneOfTheCurrentFiles(newFile)) {
@@ -117,7 +125,7 @@ void subMenuAP() {
 			//delete noise;	
 			break;
 		case 3:
-			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//wav.readFile(fileDir + chosenFile());
 			//Processor *processor = new Echo(10);
 			//processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
 			//while(noneOfTheCurrentFiles(newFile)) {
@@ -128,7 +136,7 @@ void subMenuAP() {
 			//delete processor;
 			break;
 		case 4:
-			//wav.readFile("/home/nikhilsharma/CS202/group-project-pt24/test" + chosenFile());
+			//wav.readFile(fileDir + chosenFile());
 			//Processor *limit = new Limiter();
 			//limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
 			//while(noneOfTheCurrentFiles(newFile)) {
@@ -145,7 +153,11 @@ void subMenuAP() {
 	}
 }
 bool noneOfTheCurrentFiles(string newFile) {
-    path p("/home/nikhilsharma/CS202/group-project-pt24/test");
+	char cwd[PATH_MAX];
+	getcwd(cwd, sizeof(cwd));
+	std::string sfile = "/test/";
+        std::string fileDir = cwd+sfile;
+    path p(fileDir);
     for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
         if (!is_directory(i->path())) {
             if(newFile == i->path().filename().string()) {
@@ -160,10 +172,14 @@ bool noneOfTheCurrentFiles(string newFile) {
     }
 }
 string chosenFile() {
+	char cwd[PATH_MAX];
+	getcwd(cwd, sizeof(cwd));
+	std::string sfile = "/test/";
+        std::string fileDir = cwd+sfile;
 	int chosenFileNum;
 	string chosenFile;
 	cout << "Please choose from the files below." << endl;
-    path p("/home/nikhilsharma/CS202/group-project-pt24/test");
+    path p(fileDir);
     for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
         if (!is_directory(i->path())) {
             cout << i << ". " << i->path().filename().string() << endl;
