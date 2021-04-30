@@ -61,10 +61,6 @@ Wav::~Wav() {
 	if(buffer != NULL){
 		delete[] buffer;
 	}
-	
-	if(shortBuffer != NULL){
-		delete[] buffer;
-	}
 }
 
 int Wav::getBufferSize() const {

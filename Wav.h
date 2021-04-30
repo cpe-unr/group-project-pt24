@@ -26,5 +26,4 @@ public:
 	virtual ~Wav();	
 };
 
-
 #endif //WAV_H
