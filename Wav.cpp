@@ -21,8 +21,8 @@ void Wav::readFile(const std::string &fileName) {
 		}
 		
 		if(bitType == 16){
-			shortBuffer = new short[waveHeader.data_bytes]; //16 bit buffer
-			file.read(reinterpret_cast<char*>(shortBuffer), waveHeader.data_bytes);
+			(short*)buffer = new short[waveHeader.data_bytes]; //16 bit buffer
+			file.read(reinterpret_cast<char*>(buffer), waveHeader.data_bytes);
 		}
 		
 		//testing values
@@ -41,20 +41,17 @@ unsigned char *Wav::getBuffer(){
 	return buffer;
 }
 
-short *Wav::getShortBuffer(){
-	return shortBuffer;
-}
-
 void Wav::writeFile(const std::string &outFileName) {
 	ofstream outFile(outFileName, ios::out | ios::binary);
 	outFile.write((char*)&waveHeader,sizeof(wav_header));
+	setBitType(waveHeader.bit_depth);
 	
 	if(bitType == 8){
 		outFile.write((char*)buffer, waveHeader.data_bytes);
 	}
 	
 	if(bitType == 16){
-		outFile.write(reinterpret_cast<char*>(shortBuffer), waveHeader.data_bytes);
+		outFile.write(reinterpret_cast<char*>(buffer), waveHeader.data_bytes);
 	}
 	
 	outFile.close();
