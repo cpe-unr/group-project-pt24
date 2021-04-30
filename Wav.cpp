@@ -21,7 +21,7 @@ void Wav::readFile(const std::string &fileName) {
 		}
 		
 		if(bitType == 16){
-			(short*)buffer = new short[waveHeader.data_bytes]; //16 bit buffer
+			short* buffer = new short[waveHeader.data_bytes]; //16 bit buffer
 			file.read(reinterpret_cast<char*>(buffer), waveHeader.data_bytes);
 		}
 		

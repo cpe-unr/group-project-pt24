@@ -5,10 +5,10 @@
 #include <cstddef>
 #include <iostream>
 
-template<class T>
-class Normalize : public Processor{
+class Normalize : virtual public Processor{
 public:
-	void processBuffer(T buffer, int bufferSize, int bitType) override {
+	template<typename T>
+	void processBuffer(T buffer, int bufferSize, int bitType) {
 		static const T ZERO = (pow(2, bitType)/2);
 		static const float SCALE_FACTOR = std::numeric_limits<T>::max() * 0.8;
 		float adj_i, val;

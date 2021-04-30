@@ -109,21 +109,20 @@ void subMenuAP() {
 	cout << "4. Limit" << endl;
 	cout << "5. Exit" << endl;
 	cin >> userChoiceAP;
-	//Wav wav;
 	switch(userChoiceAP){
-		case 1:
-			cout << chosenFile() << endl;
+		//case 1:
+			//Wav wav;
 			//wav.readFile(fileDir + chosenFile());
 			//Processor *normalize = new Normalize();
-			//normalize->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			//normalize->processBuffer<unsigned char*>(wav.getBuffer(), wav.getBufferSize(), 8);
 			//while(noneOfTheCurrentFiles(newFile)) {
 				//cout << "Please enter new file name" << endl;
 				//cin >> newFile;
 			//}}
 			//wav.writeFile(newFile);
 			//delete normalize;
-			break;
-		case 2:	
+			//break;
+		//case 2:	
 			//wav.readFile(fileDir + chosenFile());
 			//Processor *noise = new NoiseGate();
 			//noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
@@ -134,19 +133,21 @@ void subMenuAP() {
 			//while ((noneOfTheCurrentFiles(newFile));
 			//wav.writeFile(newFile);
 			//delete noise;	
-			break;
+		//	break;
 		case 3:
-			//wav.readFile(fileDir + chosenFile());
-			//Processor *processor = new Echo(10);
-			//processor->processBuffer(wav.getBuffer(), wav.getBufferSize());
+			Wav wav;
+			string file = chosenFile();
+			wav.readFile(fileDir + file);
+			Processor *processor = new Echo(10);
+			processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), 8);
 			//while(noneOfTheCurrentFiles(newFile)) {
 				//cout << "Please enter new file name" << endl;
 				//cin >> newFile;
 			//}}
-			//wav.writeFile(newFile);
-			//delete processor;
+			wav.writeFile(newFile);
+			delete processor;
 			break;
-		case 4:
+		//case 4:
 			//wav.readFile(fileDir + chosenFile());
 			//Processor *limit = new Limiter();
 			//limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
@@ -156,11 +157,11 @@ void subMenuAP() {
 			//}}
 			//wav.writeFile(newFile);
 			//delete limit;
-			break;
-		case 5:
-			break;
-		default:
-			cout << "Please enter a valid option!" << endl;
+		//	break;
+		//case 5:
+		//	break;
+		//default:
+		//	cout << "Please enter a valid option!" << endl;
 	}
 }
 bool noneOfTheCurrentFiles(string newFile) {
