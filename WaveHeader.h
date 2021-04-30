@@ -43,7 +43,7 @@ typedef struct wav_header{
 	// Data
 	char data_header[4]; // Contains "data"
 	int data_bytes; // Number of bytes in data. Number of samples * num_channels * sample byte size
-	char bytes[]; // audio data
+	//char bytes[]; // audio data
 
 	//Metadata 
 	char list_header[4]; // Contains "LIST"
@@ -51,13 +51,13 @@ typedef struct wav_header{
 	char info_header[4]; // Contains "INFO"
 	char INAM_header[4]; // Info ID Title
 	int INAM_size; // Number of characters in subchunk
-	char INAM_data[];// Actual Text/data
+	//char INAM_data[];// Actual Text/data
 	char IART_header[4]; //Artist
 	int IART_size;
-	char IART_data[]; // having trouble with this part!
+	//char IART_data[]; // having trouble with this part!
 	char ICMT_header[4]; //Comments
 	int ICMT_size;
-	char ICMT_data[];
+	//char ICMT_data[];
 	
 } wav_header;
 

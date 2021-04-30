@@ -5,18 +5,27 @@
 //4/22/2021
 
 #include <iostream>
+#include <fstream>
+#include <experimental/filesystem>
 #include <string>
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
-#include <boost/filesystem.hpp>
 
-using namespace boost::filesystem;
+#include "Wav.h"
+#include "Processor.h"
+#include "Limiter.h"
+#include "Echo.h"
+#include "NoiseGate.h"
+#include "Normalize.h"
+
 using namespace std;
+namespace fs = experimental::filesystem;
 
 void subMenuMD();
 void subMenuAP();
 bool noneOfTheCurrentFiles(string newFile);
+string chosenFile();
 /**
  * \brief   The function bar.
  *
@@ -55,7 +64,7 @@ int main() {
 			subMenuMD();
 			break;
 		case 2:	
-			subMenuAP()	
+			subMenuAP();	
 			break;
 		case 3:
 			break;
@@ -75,10 +84,10 @@ void subMenuMD() {
 	cin >> userChoiceMD;
 	switch(userChoiceMD){
 		case 1:
-			viewMetadata(chosenFile());
+			//viewMetadata(chosenFile());
 			break;
 		case 2:	
-			editMetaData(chosenFile());	
+			//editMetaData(chosenFile());	
 			break;
 		case 3:		
 			break;
@@ -100,9 +109,10 @@ void subMenuAP() {
 	cout << "4. Limit" << endl;
 	cout << "5. Exit" << endl;
 	cin >> userChoiceAP;
-	Wav wav;
+	//Wav wav;
 	switch(userChoiceAP){
 		case 1:
+			cout << chosenFile() << endl;
 			//wav.readFile(fileDir + chosenFile());
 			//Processor *normalize = new Normalize();
 			//normalize->processBuffer(wav.getBuffer(), wav.getBufferSize());
@@ -117,10 +127,11 @@ void subMenuAP() {
 			//wav.readFile(fileDir + chosenFile());
 			//Processor *noise = new NoiseGate();
 			//noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
-			//while(noneOfTheCurrentFiles(newFile)) {
+			//do {
 				//cout << "Please enter new file name" << endl;
 				//cin >> newFile;
-			//}}
+			//}
+			//while ((noneOfTheCurrentFiles(newFile));
 			//wav.writeFile(newFile);
 			//delete noise;	
 			break;
@@ -157,44 +168,27 @@ bool noneOfTheCurrentFiles(string newFile) {
 	getcwd(cwd, sizeof(cwd));
 	std::string sfile = "/test/";
         std::string fileDir = cwd+sfile;
-    path p(fileDir);
-    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
-        if (!is_directory(i->path())) {
-            if(newFile == i->path().filename().string()) {
-	    	return true;
-            }
-	    else {
-		return false;
-	    }
-	}
-        else
-            continue;
-    }
+	return true;
 }
 string chosenFile() {
+	int fileIndex;
+	vector<string> filenames;
 	char cwd[PATH_MAX];
 	getcwd(cwd, sizeof(cwd));
 	std::string sfile = "/test/";
         std::string fileDir = cwd+sfile;
-	int chosenFileNum;
-	string chosenFile;
+	string chosenFile = " ";
+	do {
+	int counter = 1;
 	cout << "Please choose from the files below." << endl;
-    path p(fileDir);
-    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
-        if (!is_directory(i->path())) {
-            cout << i << ". " << i->path().filename().string() << endl;
+        for(auto& p: fs::directory_iterator("test")) {
+        std::cout << counter << ". " << p.path().filename() << '\n';
+	filenames.emplace_back(p.path().filename());
+	counter++;
 	}
-        else
-            continue;
-    }	
-	cin >> chosenFileNum;
-    for (auto i = directory_iterator(p); i != directory_iterator(); i++) {
-        if (!is_directory(i->path())) {
-            if(i == chosenFileNum) [
-		chosenFile = i->path().filename().string();
+	cin >> fileIndex;
 	}
-        else
-            continue;
-    }
+	while (fileIndex > 4 || fileIndex < 1); //Trying to adhere this to SOLID principles. Tho, vector.size doesn't work properly.
+	chosenFile = filenames[fileIndex - 1];
 	return chosenFile;
 }
