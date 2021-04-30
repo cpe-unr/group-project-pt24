@@ -6,32 +6,13 @@
 #define MODIFYMD_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "Wav.h"
 
 class ModifyMD{
-	Wav wav;
-	wav_header waveHeader;
-	std::string title;
-	std::string artist;
-	std::string comments;
 public:
-	ModifyMD();
-	ModifyMD(std::filename, std::string newTitle, std::string newArtist, std::string newComments){
-		wav.readFile(filename);	
-		setTitle(newTitle);
-		setArtist(newArtist);
-		setComments(newComments);
-	}
-	
-	std::string getTitle();
-	void setTitle(std::string);
-	
-	std::string getArtist();
-	void setArtist(std::string);
-	
-	std::string getComments();
-	void setComments(std::string);
+	void writeNewMetadata(std::filename);
 };
 
 #endif

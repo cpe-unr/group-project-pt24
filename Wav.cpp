@@ -26,7 +26,7 @@ void Wav::readFile(const std::string &fileName) {
 		}
 		
 		//testing values
-		//cout << waveHeader.bit_depth << endl;
+		//cout << waveHeader.list_header << endl;
 		
 		file.close();
 	}

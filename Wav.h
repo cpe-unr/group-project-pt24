@@ -2,8 +2,6 @@
 //Group Project
 //4/27/2021
 
-//for only 8bit mono so far...
-
 #ifndef WAV_H
 #define WAV_H
 
