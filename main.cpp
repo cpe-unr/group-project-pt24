@@ -14,10 +14,10 @@
 
 #include "Wav.h"
 #include "Processor.h"
-#include "Limiter.h"
+//#include "Limiter.h"
 #include "Echo.h"
-#include "NoiseGate.h"
-#include "Normalize.h"
+//#include "NoiseGate.h"
+//#include "Normalize.h"
 
 using namespace std;
 namespace fs = experimental::filesystem;
@@ -139,7 +139,7 @@ void subMenuAP() {
 			string file = chosenFile();
 			wav.readFile(fileDir + file);
 			Processor *processor = new Echo(10);
-			processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), 8);
+			processor->processBuffer<unsigned char>(wav.getBuffer(), wav.getBufferSize(), 8);
 			//while(noneOfTheCurrentFiles(newFile)) {
 				//cout << "Please enter new file name" << endl;
 				//cin >> newFile;

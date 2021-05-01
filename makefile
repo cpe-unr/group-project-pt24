@@ -1,5 +1,5 @@
-audiomanagement: main.cpp wav.o limiter.o echo.o noisegate.o normalize.o
-	g++ -std=c++17 -o audiomanagement main.cpp Wav.cpp Processor.cpp Limiter.cpp Echo.cpp NoiseGate.cpp Normalize.cpp -lstdc++fs
+audiomanagement: main.cpp wav.o  echo.o
+	g++ -std=c++17 -o audiomanagement main.cpp Wav.cpp Processor.cpp Echo.cpp -lstdc++fs
 main.o: main.cpp
 	g++ -std=c++17 main.cpp -lstdc++fs
 wav.o: Wav.cpp Wav.h

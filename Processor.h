@@ -8,10 +8,10 @@
 #include <iostream>
 #include <cstdint>
 #include <cmath>
-
+template <typename T>
 class Processor {
 public:
-    virtual void processBuffer(unsigned char* buffer, int bufferSize, int bitType) = 0;
+    virtual void processBuffer(T buffer, int bufferSize, int bitType) = 0;
 };
 
 
