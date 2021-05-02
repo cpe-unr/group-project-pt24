@@ -1,12 +1,11 @@
 #ifndef LIMITER_H
 #define LIMITER_H
 #include "Processor.h"
-#include <math.h>
 
-class Limiter : public Processor {
+template<class T>
+class Limiter : public Processor<T> {
 public:
-	template<typename T, typename U>
-	void processBuffer(T buffer, int bufferSize, int bitType) {
+	void processBuffer(T *buffer, int bufferSize, int bitType) {
 		const U ZERO = (U) (pow(2, bitType)/2);
 		const U LIMIT = (U) (((pow(2, bitType)/2)-1) * (0.8));
 		const U UPPER_LIMIT = ZERO + LIMIT;

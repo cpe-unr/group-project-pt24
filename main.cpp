@@ -138,12 +138,13 @@ void subMenuAP() {
 			Wav wav;
 			string file = chosenFile();
 			wav.readFile(fileDir + file);
-			Processor *processor = new Echo(10);
-			processor->processBuffer<unsigned char>(wav.getBuffer(), wav.getBufferSize(), 8);
-			//while(noneOfTheCurrentFiles(newFile)) {
-				//cout << "Please enter new file name" << endl;
-				//cin >> newFile;
-			//}}
+			Processor<unsigned char> *processor = new Echo<unsigned char>(10);
+			processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), 8);
+			do {
+				cout << "Please enter new file name" << endl;
+				cin >> newFile;
+			}
+			while(noneOfTheCurrentFiles(newFile) == false);
 			wav.writeFile(newFile);
 			delete processor;
 			break;
@@ -165,19 +166,25 @@ void subMenuAP() {
 	}
 }
 bool noneOfTheCurrentFiles(string newFile) {
-	char cwd[PATH_MAX];
-	getcwd(cwd, sizeof(cwd));
-	std::string sfile = "/test/";
-        std::string fileDir = cwd+sfile;
-	return true;
+	int fileIndex;
+	vector<string> filenames;
+        for(auto& p: fs::directory_iterator("test")) {
+	filenames.emplace_back(p.path().filename());
+	}
+	for(auto it = std::begin(filenames); it != std::end(filenames); ++it) {
+	if(newFile == *it) {
+		cout << "Test 1" << endl;
+		return false;
+	}
+	else {
+		cout << "Test 2" << endl;
+		return true;
+	}
+	}
 }
 string chosenFile() {
 	int fileIndex;
 	vector<string> filenames;
-	char cwd[PATH_MAX];
-	getcwd(cwd, sizeof(cwd));
-	std::string sfile = "/test/";
-        std::string fileDir = cwd+sfile;
 	string chosenFile = " ";
 	do {
 	int counter = 1;

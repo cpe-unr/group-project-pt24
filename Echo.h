@@ -11,7 +11,7 @@ public:
 
 	explicit Echo(int delay) : delay(delay) {
 	}
-	void processBuffer(T buffer, int bufferSize, int bitType) {
+	void processBuffer(T *buffer, int bufferSize, int bitType) {
 		static const uint8_t ZERO = (pow(2, bitType)/2);
 		static const float SCALE_FACTOR = 2.0f;
 		float adj_i, val, adj_delayed_i;

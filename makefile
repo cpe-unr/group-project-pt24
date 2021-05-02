@@ -13,4 +13,4 @@ noisegate.o: NoiseGate.cpp NoiseGate.h
 normalize.o: Normalize.cpp Normalize.h
 	g++ -c -std=c++17 Normalize.cpp
 clean:
-	rm *.o audiomanagement
+	rm *.o audiomanagement *.wav

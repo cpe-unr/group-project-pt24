@@ -3,15 +3,15 @@
 #include "Processor.h"
 #include <math.h>
 
-template<class T, class U>
-class NoiseGate : public Processor{
+template<class T>
+class NoiseGate : public Processor<T> {
 private:
-	T threshold;
+	uint8_t threshold;
 public:
-	explicit NoiseGate(T threshold) : threshold(threshold) {
+	explicit NoiseGate(uint8_t threshold) : threshold(threshold) {
 	}
-	void processBuffer(T buffer, int bufferSize, int bitType) override {
-		const U ZERO = (pow(2, bitType)/2);
+	void processBuffer(T *buffer, int bufferSize, int bitType) {
+		const uint8_t ZERO = (pow(2, bitType)/2);
 		for(int i = 1; i < bufferSize; i++) {
 			if(buffer[i] > (ZERO - threshold) && buffer[i] < (ZERO + threshold)) {
 				buffer[i] = ZERO;
