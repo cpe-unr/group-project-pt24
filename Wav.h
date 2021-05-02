@@ -9,6 +9,7 @@
 
 class Wav{
 	unsigned char* buffer = NULL;
+	unsigned short* bufferShort = NULL;
 	wav_header waveHeader;
 	short bitType;
 public:
@@ -16,6 +17,7 @@ public:
 	void writeFile(const std::string &outFileName);
 
 	unsigned char *getBuffer();
+	unsigned short *getBufferShort();
 	int getBufferSize() const;
 
 	short getBitType();

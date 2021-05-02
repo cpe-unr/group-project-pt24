@@ -4,11 +4,10 @@
 #include <limits>
 #include <cstddef>
 #include <iostream>
-
-class Normalize : virtual public Processor{
+template<class T>
+class Normalize : public Processor<T>{
 public:
-	template<typename T>
-	void processBuffer(T buffer, int bufferSize, int bitType) {
+	void processBuffer(T *buffer, int bufferSize, int bitType) {
 		static const T ZERO = (pow(2, bitType)/2);
 		static const float SCALE_FACTOR = std::numeric_limits<T>::max() * 0.8;
 		float adj_i, val;

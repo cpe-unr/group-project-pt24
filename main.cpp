@@ -14,10 +14,10 @@
 
 #include "Wav.h"
 #include "Processor.h"
-//#include "Limiter.h"
+#include "Limiter.h"
 #include "Echo.h"
-//#include "NoiseGate.h"
-//#include "Normalize.h"
+#include "NoiseGate.h"
+#include "Normalize.h"
 
 using namespace std;
 namespace fs = experimental::filesystem;
@@ -110,59 +110,124 @@ void subMenuAP() {
 	cout << "5. Exit" << endl;
 	cin >> userChoiceAP;
 	switch(userChoiceAP){
-		//case 1:
-			//Wav wav;
-			//wav.readFile(fileDir + chosenFile());
-			//Processor *normalize = new Normalize();
-			//normalize->processBuffer<unsigned char*>(wav.getBuffer(), wav.getBufferSize(), 8);
-			//while(noneOfTheCurrentFiles(newFile)) {
-				//cout << "Please enter new file name" << endl;
-				//cin >> newFile;
-			//}}
-			//wav.writeFile(newFile);
-			//delete normalize;
-			//break;
-		//case 2:	
-			//wav.readFile(fileDir + chosenFile());
-			//Processor *noise = new NoiseGate();
-			//noise->processBuffer(wav.getBuffer(), wav.getBufferSize());
-			//do {
-				//cout << "Please enter new file name" << endl;
-				//cin >> newFile;
-			//}
-			//while ((noneOfTheCurrentFiles(newFile));
-			//wav.writeFile(newFile);
-			//delete noise;	
-		//	break;
-		case 3:
+		case 1: {
 			Wav wav;
-			string file = chosenFile();
-			wav.readFile(fileDir + file);
-			Processor<unsigned char> *processor = new Echo<unsigned char>(10);
-			processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), 8);
-			do {
-				cout << "Please enter new file name" << endl;
+			wav.readFile(fileDir + chosenFile());
+			if(wav.getBitType() == 16) {
+				short int vIn = wav.getBitType();
+				int vOut = int(vIn);
+				Processor<unsigned short> *normalize = new Normalize<unsigned short>();
+				normalize->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				do {
+				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete normalize;
 			}
-			while(noneOfTheCurrentFiles(newFile) == false);
-			wav.writeFile(newFile);
-			delete processor;
+			else {
+				Processor<unsigned char> *normalize = new Normalize<unsigned char>();
+				normalize->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				do {
+					cout << "Please enter new file name with a .wav extension at the end" << endl;
+					cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete normalize;
+			}
+			}
 			break;
-		//case 4:
-			//wav.readFile(fileDir + chosenFile());
-			//Processor *limit = new Limiter();
-			//limit->processBuffer(wav.getBuffer(), wav.getBufferSize());
-			//while(noneOfTheCurrentFiles(newFile)) {
-				//cout << "Please enter new file name" << endl;
-				//cin >> newFile;
-			//}}
-			//wav.writeFile(newFile);
-			//delete limit;
-		//	break;
-		//case 5:
-		//	break;
-		//default:
-		//	cout << "Please enter a valid option!" << endl;
+		case 2:	{
+			Wav wav;
+			wav.readFile(fileDir + chosenFile());
+			if(wav.getBitType() == 16) {
+				short int vIn = wav.getBitType();
+				int vOut = int(vIn);
+				Processor<unsigned short> *noise = new NoiseGate<unsigned short>(6400);
+				noise->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				do {
+				cout << "Please enter new file name with a .wav extension at the end" << endl;
+				cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete noise;
+			}
+			else {
+				Processor<unsigned char> *noise = new NoiseGate<unsigned char>(25);
+				noise->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				do {
+					cout << "Please enter new file name with a .wav extension at the end" << endl;
+					cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete noise;
+			}
+			}
+			break;
+		case 3: {
+			Wav wav;
+			wav.readFile(fileDir + chosenFile());
+			if(wav.getBitType() == 16) {
+				short int vIn = wav.getBitType();
+				int vOut = int(vIn);
+				Processor<unsigned short> *processor = new Echo<unsigned short>(256000);
+				processor->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				do {
+				cout << "Please enter new file name with a .wav extension at the end" << endl;
+				cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete processor;
+			}
+			else {
+				Processor<unsigned char> *processor = new Echo<unsigned char>(32000);
+				processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				do {
+					cout << "Please enter new file name with a .wav extension at the end" << endl;
+					cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete processor;
+			}
+			}
+			break;
+		case 4: {
+			Wav wav;
+			wav.readFile(fileDir + chosenFile());
+			if(wav.getBitType() == 16) {
+				short int vIn = wav.getBitType();
+				int vOut = int(vIn);
+				Processor<unsigned short> *limit = new Limiter<unsigned short>();
+				limit->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				do {
+				cout << "Please enter new file name with a .wav extension at the end" << endl;
+				cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete limit;
+			}
+			else {
+				Processor<unsigned char> *limit = new Limiter<unsigned char>();
+				limit->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				do {
+					cout << "Please enter new file name with a .wav extension at the end" << endl;
+					cin >> newFile;
+				}
+				while(noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(newFile);
+				delete limit;
+			}
+			}
+			break;
+		default:
+			cout << "Please enter a valid option!" << endl;
 	}
 }
 bool noneOfTheCurrentFiles(string newFile) {
@@ -171,16 +236,13 @@ bool noneOfTheCurrentFiles(string newFile) {
         for(auto& p: fs::directory_iterator("test")) {
 	filenames.emplace_back(p.path().filename());
 	}
-	for(auto it = std::begin(filenames); it != std::end(filenames); ++it) {
-	if(newFile == *it) {
+	for(auto item: filenames) {
+	if(newFile == item) {
 		cout << "Test 1" << endl;
 		return false;
 	}
-	else {
-		cout << "Test 2" << endl;
-		return true;
 	}
-	}
+	return true;
 }
 string chosenFile() {
 	int fileIndex;
