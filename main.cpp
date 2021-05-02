@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
+#include <vector>
 
 #include "Wav.h"
 #include "Processor.h"
@@ -18,6 +19,8 @@
 #include "Echo.h"
 #include "NoiseGate.h"
 #include "Normalize.h"
+#include "WaveHeader.h"
+#include "WavData.h"
 
 using namespace std;
 namespace fs = experimental::filesystem;
@@ -76,6 +79,10 @@ int main() {
 	return 0;
 }
 void subMenuMD() {
+	char cwd[PATH_MAX];
+	getcwd(cwd, sizeof(cwd));
+	std::string sfile = "/test/";
+        std::string fileDir = cwd+sfile;
 	int userChoiceMD;
 	cout << "Please choose from one of the options below" << endl;
 	cout << "1. View metaData" << endl;
@@ -83,13 +90,22 @@ void subMenuMD() {
 	cout << "3. Exit" << endl;
 	cin >> userChoiceMD;
 	switch(userChoiceMD){
-		case 1:
-			//viewMetadata(chosenFile());
+		case 1:{
+			Wav wav;
+			//MetadataPrinter printer;
+			wav.readFile(fileDir + chosenFile());
+			WavData WavData(wav.waveHeader.wav_size, wav.waveHeader.sample_rate, wav.waveHeader.data_bytes, wav.waveHeader.audio_format, wav.waveHeader.num_channels, wav.waveHeader.bit_depth, "gibber", "Nikhil", "none");
+			WavData.printMD();
+			//cout << wav.waveHeader.sample_rate << endl; //This works!!!!!!!
+			//delete wavdata;
+			}
 			break;
-		case 2:	
+		case 2:	{
 			//editMetaData(chosenFile());	
+			}
 			break;
-		case 3:		
+		case 3:	{
+			}
 			break;
 		default:
 			cout << "Please enter a valid option!" << endl;
@@ -238,7 +254,6 @@ bool noneOfTheCurrentFiles(string newFile) {
 	}
 	for(auto item: filenames) {
 	if(newFile == item) {
-		cout << "Test 1" << endl;
 		return false;
 	}
 	}

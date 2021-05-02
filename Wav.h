@@ -10,9 +10,10 @@
 class Wav{
 	unsigned char* buffer = NULL;
 	unsigned short* bufferShort = NULL;
-	wav_header waveHeader;
+
 	short bitType;
 public:
+	wav_header waveHeader;
 	void readFile(const std::string &fileName);
 	void writeFile(const std::string &outFileName);
 

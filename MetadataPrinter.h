@@ -7,10 +7,11 @@
 
 #include <iostream>
 #include <vector>
-#include "WavData.h"
 
 class MetadataPrinter{
-	void printMetadata(std::vector<WavData>);
+public:
+	MetadataPrinter();
+	void printMetadata();
 };
 
 #endif

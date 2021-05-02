@@ -28,7 +28,7 @@ void WavData::setDataBytes(int newDataBytes){
 	dataBytes = newDataBytes;
 }
 
-short WavData::getAudioFormat(){
+short int WavData::getAudioFormat(){
 	return audioFormat;
 }
 
@@ -36,7 +36,7 @@ void WavData::setAudioFormat(short newAudioFormat){
 	audioFormat = newAudioFormat;
 }
 
-short WavData::getNumChannels(){
+short int WavData::getNumChannels(){
 	return numChannels;
 }
 
@@ -44,11 +44,11 @@ void WavData::setNumChannels(short newNumChannels){
 	numChannels = newNumChannels;
 }
 
-short WavData::getBitsPerSample(){
+short int WavData::getBitsPerSample(){
 	return bitsPerSample;
 }
 
-void WavData::setBitsPerSample(){
+void WavData::setBitsPerSample(short newBitsPerSample){
 	bitsPerSample = newBitsPerSample;
 }
 
@@ -74,4 +74,8 @@ string WavData::getComments(){
 	
 void WavData::setComments(string newComments){
 	comments = newComments;
+}
+MetadataPrinter metaprinter;
+void WavData::printMD() {
+	metaprinter.printMetadata();
 }
