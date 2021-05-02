@@ -7,12 +7,13 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <string>
-#include "Wav.h"
+#include "WavData.h"
 
 class ModifyMD{
 public:
-	void writeNewMetadata(std::filename);
+	void writeNewMetadata(std::string, std::string, std::string, std::string);
 };
 
 #endif

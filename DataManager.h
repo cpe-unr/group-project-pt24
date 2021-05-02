@@ -20,7 +20,7 @@ public:
 	DataManager(std::string);
 
 	void loadWavData(std::string);
-	void printMetadata(std::string);
+	void viewMetadata();
 	void editMetaData(std::string);
 };
 

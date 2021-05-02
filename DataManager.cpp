@@ -31,12 +31,12 @@ DataManager::loadWavData(string filename){
 	}
 }
 
-DataManager::viewMetadata(string filename){
+DataManager::viewMetadata(){
 	MetadataPrinter metadataPrinter;
-	metadataPrinter.printMetaData(filename);
+	metadataPrinter.printMetaData(dataList);
 }
 
-DataManager::editMetadata(string filename){
+DataManager::editMetadata(string filename, string title, string artist, string comments){
 	ModifyMD modifyMD;
-	modifyMD.writeNewMetadata(filename);
+	modifyMD.writeNewMetadata(filename, title, artist, comments);
 }

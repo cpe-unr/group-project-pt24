@@ -14,6 +14,7 @@ void Wav::readFile(const std::string &fileName) {
 	if(file.is_open()){
 		file.read((char*)&waveHeader, sizeof(wav_header));
 		setBitType(waveHeader.bit_depth);
+		
 		if(bitType == 8){
 			buffer = new unsigned char[waveHeader.data_bytes]; //8 bit buffer
 			file.read((char*)buffer, waveHeader.data_bytes);
@@ -39,9 +40,11 @@ void Wav::readFile(const std::string &fileName) {
 unsigned char *Wav::getBuffer(){
 	return buffer;
 }
+
 unsigned short *Wav::getBufferShort() {
 	return bufferShort;
 }
+
 void Wav::writeFile(const std::string &outFileName) {
 	ofstream outFile(outFileName, ios::out | ios::binary);
 	outFile.write((char*)&waveHeader,sizeof(wav_header));
