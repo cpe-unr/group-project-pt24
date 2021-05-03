@@ -4,6 +4,8 @@
 
 #include "WavData.h"
 
+WavData::WavData(){}
+
 int WavData::getFileSize(){
 	return fileSize;
 }
@@ -52,30 +54,31 @@ void WavData::setBitsPerSample(short newBitsPerSample){
 	bitsPerSample = newBitsPerSample;
 }
 
-char WavData::getTitle(){
+char *WavData::getTitle(){
 	return title;
 }
 	
-void WavData::setTitle(char newTitle){
+void WavData::setTitle(char *newTitle){
 	title = newTitle;
 }
 	
-char WavData::getArtist(){
+char *WavData::getArtist(){
 	return artist;
 }
 	
-void WavData::setArtist(char newArtist){
+void WavData::setArtist(char *newArtist){
 	artist = newArtist;
 }
 	
-char WavData::getComments(){
+char *WavData::getComments(){
 	return comments;
 }
 	
-void WavData::setComments(char newComments){
+void WavData::setComments(char *newComments){
 	comments = newComments;
 }
-MetadataPrinter metaprinter;
-void WavData::printMD() {
-	metaprinter.printMetadata();
-}
+
+//MetadataPrinter metaprinter;
+//void WavData::printMD() {
+//	metaprinter.printMetadata();
+//}

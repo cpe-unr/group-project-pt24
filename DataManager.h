@@ -9,10 +9,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "WaveHeader.h"
+#include "Wav.h"
 #include "WavData.h"
+#include "WaveHeader.h"
+#include "MetadataPrinter.h"
 
 class DataManager{
+	Wav wav;
 	wav_header waveHeader;
 	std::vector<WavData> dataList;
 public:

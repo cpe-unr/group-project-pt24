@@ -6,13 +6,11 @@
 
 using namespace std;
 
-MetadataPrinter::MetadataPrinter() {}
-
-void MetadataPrinter::printMetadata(){
-	cout << "abcd" << endl;
-	//cout << "Title: " << WavData.getTitle() << endl
-	//	<< "Artist: " << data.back.getArtist() << endl
-	//	<< "Comments: " << data.back.getComments() << endl;
+void MetadataPrinter::printMetadata(vector<WavData> data){
+	//cout << "abcd" << endl;
+	cout 	<< "Title: " << data.back().getTitle() << endl
+		<< "Artist: " << data.back().getArtist() << endl
+		<< "Comments: " << data.back().getComments() << endl;
 }
 
 

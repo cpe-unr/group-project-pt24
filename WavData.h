@@ -6,16 +6,14 @@
 #define WAVDATA_H
 
 #include <string>
-#include "MetadataPrinter.h"
-
-using namespace std;
 
 class WavData{
 	int fileSize, sampleRate, dataBytes;
 	short int audioFormat, numChannels, bitsPerSample;
-	char title, artist, comments;
+	char *title, *artist, *comments;
 public:
-	WavData(int newFileSize, int newSampleRate, int newDataBytes, short int newAudioFormat, short int newNumChannels, short int newBitsPerSample, char newTitle, char newArtist, char newComments){
+	WavData();
+	WavData(int newFileSize, int newSampleRate, int newDataBytes, short int newAudioFormat, short int newNumChannels, short int newBitsPerSample, char *newTitle, char *newArtist, char *newComments){
 		fileSize = newFileSize;
 		sampleRate = newSampleRate;
 		dataBytes = newDataBytes;
@@ -45,17 +43,17 @@ public:
 	short int getBitsPerSample();
 	void setBitsPerSample(short);
 	
-	char getTitle();
-	void setTitle(char);
+	char *getTitle();
+	void setTitle(char*);
 	
-	char getArtist();
-	void setArtist(char);
+	char *getArtist();
+	void setArtist(char*);
 	
-	char getComments();
-	void setComments(char);
+	char *getComments();
+	void setComments(char*);
 	
-	MetadataPrinter metaprinter;
-	void printMD();
+	//MetadataPrinter metaprinter;
+	//void printMD();
 };
 
 #endif

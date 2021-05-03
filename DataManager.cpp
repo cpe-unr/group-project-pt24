@@ -10,8 +10,8 @@ DataManager::DataManager(string filename){
 	loadWavData(filename);
 }
 
-DataManager::loadWavData(string filename){
-	ifstream file(fileName, ios::binary | ios::in);
+void DataManager::loadWavData(string filename){
+	ifstream file(filename, ios::binary | ios::in);
 	if(file.is_open()){
 		file.read((char*)&waveHeader, sizeof(wav_header));
 		
@@ -22,24 +22,24 @@ DataManager::loadWavData(string filename){
 		wavData.setAudioFormat(waveHeader.audio_format);
 		wavData.setNumChannels(waveHeader.num_channels);
 		wavData.setBitsPerSample(waveHeader.bit_depth);
-		wavData.setTitle(waveHeader.INAM_data); //...
-		wavData.setArtist(waveHeader.IART_data);
-		wavData.setComments(waveHeader.ICMT_data);
+		
+		wav.readFile(filename); //idk if needed
+		wavData.setTitle(wav.getTitle());
+		wavData.setArtist(wav.getArtist());
+		wavData.setComments(wav.getComments());
+		
 		dataList.push_back(wavData);
-
-		//waveHeader->bytes = (char*)malloc(sizeof(char) * waveHeader->data_bytes);
-		//file.read(waveHeader->bytes, wavHeader->data_bytes);
 
 		file.close();
 	}
 }
 
-DataManager::viewMetadata(){
+void DataManager::viewMetadata(){
 	MetadataPrinter metadataPrinter;
-	metadataPrinter.printMetaData(dataList);
+	metadataPrinter.printMetadata(dataList);
 }
 
-DataManager::editMetadata(string filename, string title, string artist, string comments){
+/*void DataManager::editMetadata(string filename, string title, string artist, string comments){
 	ModifyMD modifyMD;
 	modifyMD.writeNewMetadata(filename, title, artist, comments);
-}
+}*/

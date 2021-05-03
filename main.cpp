@@ -21,6 +21,7 @@
 #include "Normalize.h"
 #include "WaveHeader.h"
 #include "WavData.h"
+#include "DataManager.h"
 
 using namespace std;
 namespace fs = experimental::filesystem;
@@ -91,13 +92,8 @@ void subMenuMD() {
 	cin >> userChoiceMD;
 	switch(userChoiceMD){
 		case 1:{
-			Wav wav;
-			//MetadataPrinter printer;
-			wav.readFile(fileDir + chosenFile());
-			WavData WavData(wav.waveHeader.wav_size, wav.waveHeader.sample_rate, wav.waveHeader.data_bytes, wav.waveHeader.audio_format, wav.waveHeader.num_channels, wav.waveHeader.bit_depth, wav.waveHeader.list_header[0], wav.waveHeader.list_header[1], wav.waveHeader.list_header[2]);
-			WavData.printMD();
-			cout << wav.waveHeader.wav_size << endl; //This works!!!!!!!
-			//delete wavdata;
+			DataManager dataManager(fileDir + chosenFile());
+			dataManager.viewMetadata();
 			}
 			break;
 		case 2:	{

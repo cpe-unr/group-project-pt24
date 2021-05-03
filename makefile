@@ -1,5 +1,5 @@
-audiomanagement: main.cpp wav.o  echo.o wavdata.o mdprint.o
-	g++ -std=c++17 -o audiomanagement main.cpp Wav.cpp Processor.cpp Echo.cpp WavData.cpp MetadataPrinter.cpp -lstdc++fs
+audiomanagement: main.cpp wav.o  echo.o wavdata.o mdprint.o data_manager.o
+	g++ -std=c++17 -o audiomanagement main.cpp Wav.cpp Processor.cpp Echo.cpp WavData.cpp DataManager.cpp MetadataPrinter.cpp -lstdc++fs
 main.o: main.cpp
 	g++ -std=c++17 main.cpp -lstdc++fs
 wav.o: Wav.cpp Wav.h
@@ -16,5 +16,7 @@ wavdata.o: WavData.cpp WavData.h
 	g++ -c -std=c++17 WavData.cpp
 mdprint.o: MetadataPrinter.cpp MetadataPrinter.h
 	g++ -c -std=c++17 MetadataPrinter.cpp
+data_manager.o: DataManager.cpp DataManager.h
+	g++ -c -std=c++17 DataManager.cpp
 clean:
 	rm *.o audiomanagement *.wav *.csv
