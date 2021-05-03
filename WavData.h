@@ -13,9 +13,9 @@ using namespace std;
 class WavData{
 	int fileSize, sampleRate, dataBytes;
 	short int audioFormat, numChannels, bitsPerSample;
-	std::string title, artist, comments;
+	char title, artist, comments;
 public:
-	WavData(int newFileSize, int newSampleRate, int newDataBytes, short int newAudioFormat, short int newNumChannels, short int newBitsPerSample, std::string newTitle, std::string newArtist, std::string newComments){
+	WavData(int newFileSize, int newSampleRate, int newDataBytes, short int newAudioFormat, short int newNumChannels, short int newBitsPerSample, char newTitle, char newArtist, char newComments){
 		fileSize = newFileSize;
 		sampleRate = newSampleRate;
 		dataBytes = newDataBytes;
@@ -45,14 +45,14 @@ public:
 	short int getBitsPerSample();
 	void setBitsPerSample(short);
 	
-	std::string getTitle();
-	void setTitle(std::string);
+	char getTitle();
+	void setTitle(char);
 	
-	std::string getArtist();
-	void setArtist(std::string);
+	char getArtist();
+	void setArtist(char);
 	
-	std::string getComments();
-	void setComments(std::string);
+	char getComments();
+	void setComments(char);
 	
 	MetadataPrinter metaprinter;
 	void printMD();

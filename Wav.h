@@ -20,7 +20,7 @@ public:
 	unsigned char *getBuffer();
 	unsigned short *getBufferShort();
 	int getBufferSize() const;
-
+	short getNumChannels();
 	short getBitType();
 	void setBitType(short);
 

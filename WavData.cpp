@@ -52,27 +52,27 @@ void WavData::setBitsPerSample(short newBitsPerSample){
 	bitsPerSample = newBitsPerSample;
 }
 
-string WavData::getTitle(){
+char WavData::getTitle(){
 	return title;
 }
 	
-void WavData::setTitle(string newTitle){
+void WavData::setTitle(char newTitle){
 	title = newTitle;
 }
 	
-string WavData::getArtist(){
+char WavData::getArtist(){
 	return artist;
 }
 	
-void WavData::setArtist(string newArtist){
+void WavData::setArtist(char newArtist){
 	artist = newArtist;
 }
 	
-string WavData::getComments(){
+char WavData::getComments(){
 	return comments;
 }
 	
-void WavData::setComments(string newComments){
+void WavData::setComments(char newComments){
 	comments = newComments;
 }
 MetadataPrinter metaprinter;

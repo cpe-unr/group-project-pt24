@@ -74,8 +74,6 @@ int main() {
 		default:
 			cout << "Please enter a valid option!" << endl;
 	}
-	//cout << "Hello, World!" << endl;
-	
 	return 0;
 }
 void subMenuMD() {
@@ -94,9 +92,9 @@ void subMenuMD() {
 			Wav wav;
 			//MetadataPrinter printer;
 			wav.readFile(fileDir + chosenFile());
-			WavData WavData(wav.waveHeader.wav_size, wav.waveHeader.sample_rate, wav.waveHeader.data_bytes, wav.waveHeader.audio_format, wav.waveHeader.num_channels, wav.waveHeader.bit_depth, "gibber", "Nikhil", "none");
+			WavData WavData(wav.waveHeader.wav_size, wav.waveHeader.sample_rate, wav.waveHeader.data_bytes, wav.waveHeader.audio_format, wav.waveHeader.num_channels, wav.waveHeader.bit_depth, wav.waveHeader.list_header[0], wav.waveHeader.list_header[1], wav.waveHeader.list_header[2]);
 			WavData.printMD();
-			//cout << wav.waveHeader.sample_rate << endl; //This works!!!!!!!
+			cout << WavData.getFileSize()<< endl; //This works!!!!!!!
 			//delete wavdata;
 			}
 			break;
@@ -133,7 +131,7 @@ void subMenuAP() {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
 				Processor<unsigned short> *normalize = new Normalize<unsigned short>();
-				normalize->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				normalize->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
 				do {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
@@ -144,7 +142,7 @@ void subMenuAP() {
 			}
 			else {
 				Processor<unsigned char> *normalize = new Normalize<unsigned char>();
-				normalize->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				normalize->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
 				do {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
@@ -162,7 +160,7 @@ void subMenuAP() {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
 				Processor<unsigned short> *noise = new NoiseGate<unsigned short>(6400);
-				noise->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				noise->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
 				do {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
@@ -173,7 +171,7 @@ void subMenuAP() {
 			}
 			else {
 				Processor<unsigned char> *noise = new NoiseGate<unsigned char>(25);
-				noise->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				noise->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
 				do {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
@@ -191,7 +189,7 @@ void subMenuAP() {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
 				Processor<unsigned short> *processor = new Echo<unsigned short>(256000);
-				processor->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				processor->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
 				do {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
@@ -202,7 +200,7 @@ void subMenuAP() {
 			}
 			else {
 				Processor<unsigned char> *processor = new Echo<unsigned char>(32000);
-				processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
 				do {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
@@ -220,7 +218,7 @@ void subMenuAP() {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
 				Processor<unsigned short> *limit = new Limiter<unsigned short>();
-				limit->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut);
+				limit->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
 				do {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
@@ -231,7 +229,7 @@ void subMenuAP() {
 			}
 			else {
 				Processor<unsigned char> *limit = new Limiter<unsigned char>();
-				limit->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType());
+				limit->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
 				do {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;

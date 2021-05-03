@@ -14,12 +14,10 @@ void Wav::readFile(const std::string &fileName) {
 	if(file.is_open()){
 		file.read((char*)&waveHeader, sizeof(wav_header));
 		setBitType(waveHeader.bit_depth);
-		
 		if(bitType == 8){
 			buffer = new unsigned char[waveHeader.data_bytes]; //8 bit buffer
 			file.read((char*)buffer, waveHeader.data_bytes);
 		}
-		
 		if(bitType == 16){
 			bufferShort = new unsigned short[waveHeader.data_bytes]; //16 bit buffer
 			file.read(reinterpret_cast<char*>(bufferShort), waveHeader.data_bytes);
@@ -73,7 +71,9 @@ Wav::~Wav() {
 int Wav::getBufferSize() const {
 	return waveHeader.data_bytes;
 }
-
+short Wav::getNumChannels() {
+	return waveHeader.num_channels;
+}
 short Wav::getBitType(){
 	return bitType;
 }
