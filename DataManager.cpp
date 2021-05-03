@@ -26,7 +26,10 @@ DataManager::loadWavData(string filename){
 		wavData.setArtist(waveHeader.IART_data);
 		wavData.setComments(waveHeader.ICMT_data);
 		dataList.push_back(wavData);
-	
+
+		//waveHeader->bytes = (char*)malloc(sizeof(char) * waveHeader->data_bytes);
+		//file.read(waveHeader->bytes, wavHeader->data_bytes);
+
 		file.close();
 	}
 }

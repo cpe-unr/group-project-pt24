@@ -2,9 +2,6 @@
 //Group Project
 //4/27/2021
 
-#include <string>
-#include <fstream>
-#include <iostream>
 #include "Wav.h"
 
 using namespace std;
@@ -14,24 +11,52 @@ void Wav::readFile(const std::string &fileName) {
 	if(file.is_open()){
 		file.read((char*)&waveHeader, sizeof(wav_header));
 		setBitType(waveHeader.bit_depth);
+		
 		if(bitType == 8){
 			buffer = new unsigned char[waveHeader.data_bytes]; //8 bit buffer
 			file.read((char*)buffer, waveHeader.data_bytes);
 		}
+		
 		if(bitType == 16){
 			bufferShort = new unsigned short[waveHeader.data_bytes]; //16 bit buffer
 			file.read(reinterpret_cast<char*>(bufferShort), waveHeader.data_bytes);
 		}
 		
-		//testing values
-		//cout << waveHeader.list_header << endl;
+		file.read((char*)&Metadata, sizeof(metadata_header));
+		
+		file.read((char*)&Title, sizeof(INAM_data));
+		title = new char[Title.INAM_size];
+		file.read((char*)title, Title.INAM_size);
+		
+		file.read((char*)&Artist, sizeof(IART_data));
+		artist = new char[Artist.IART_size];
+		file.read((char*)artist, Artist.IART_size);
+		
+		file.read((char*)&Comments, sizeof(ICMT_data));
+		comments = new char[Comments.ICMT_size];
+		file.read((char*)comments, Comments.ICMT_size);
+		
+		/*
+		
+		testing values it works finally!!! ;o;
+		
+		cout << getBufferSize() << endl;
+		cout << metaData.list_header << endl << metaData.list_chunk_size << endl;
+		cout << metaData.info_header << endl;
+		cout 	<< Title.INAM_header << endl 
+			<< Title.INAM_size << endl
+			<< title << endl;
+		cout 	<< Artist.IART_header << endl
+			<< Artist.IART_size << endl
+			<< artist << endl;
+		cout	<< Comments.ICMT_header << endl
+			<< Comments.ICMT_size << endl
+			<< comments << endl;
+			
+		*/
 		
 		file.close();
 	}
-
-	//16 bit buffer lancaster talked about
-	//short* shortBuffer = reinterpret_Cast<short*>(buffer);
-	//short firstValue = shortBuffer[0];
 }
 
 
@@ -66,14 +91,32 @@ Wav::~Wav() {
 	if(bufferShort != NULL) {
 		delete[] bufferShort;
 	}
+	
+	delete[] title;
+	delete[] artist;
+	delete[] comments;
 }
 
 int Wav::getBufferSize() const {
 	return waveHeader.data_bytes;
 }
+
 short Wav::getNumChannels() {
 	return waveHeader.num_channels;
 }
+
+char *Wav::getTitle(){
+	return title;
+}
+
+char *Wav::getArtist(){
+	return artist;
+}
+
+char *Wav::getComments(){
+	return comments;
+}
+ 
 short Wav::getBitType(){
 	return bitType;
 }

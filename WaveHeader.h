@@ -5,7 +5,7 @@
 #ifndef WAVEHEADER_H
 #define WAVEHEADER_H
 
-// This header copied from https://gist.github.com/Jon-Schneider/8b7c53d27a7a13346a643dac9c19d34f
+// wav_header copied from https://gist.github.com/Jon-Schneider/8b7c53d27a7a13346a643dac9c19d34f
 /*
  * https://docs.fileformat.com/audio/wav/
  * Positions	Sample Value	Description
@@ -43,21 +43,30 @@ typedef struct wav_header{
 	// Data
 	char data_header[4]; // Contains "data"
 	int data_bytes; // Number of bytes in data. Number of samples * num_channels * sample byte size
-	//char *bytes; // audio data
-
-	//Metadata
+} wav_header;
+	
+typedef struct metadata_header{
 	char list_header[4]; // Contains "LIST"
 	int list_chunk_size;
 	char info_header[4]; // Contains "INFO"
-	char INAM_header[4]; // Info ID Title 
+} metadata_header;
+	
+typedef struct INAM_data{
+	char INAM_header[4]; // Info ID Title
 	int INAM_size; // Number of characters in subchunk
-	//char *INAM_data;// Actual Text/data 
+	//char title[]; // Actual Text/data
+} INAM_data;
+	
+typedef struct IART_data{
 	char IART_header[4]; //Artist
 	int IART_size;
-	//char *IART_data; // still having trouble with this part! ;-;
-	char ICMT_header[4]; //Comments 
+	//char artist[];
+} IART_data;
+	
+typedef struct ICMT_data{
+	char ICMT_header[4]; //Comments
 	int ICMT_size;
-	//char *ICMT_data;
-} wav_header;
+	//char ICMT_data[];
+} ICMT_data;
 
 #endif //WAVEHEADER_H
