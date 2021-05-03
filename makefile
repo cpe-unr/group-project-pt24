@@ -17,4 +17,4 @@ wavdata.o: WavData.cpp WavData.h
 mdprint.o: MetadataPrinter.cpp MetadataPrinter.h
 	g++ -c -std=c++17 MetadataPrinter.cpp
 clean:
-	rm *.o audiomanagement *.wav
+	rm *.o audiomanagement *.wav *.csv

@@ -15,17 +15,17 @@ public:
 		const T LOWER_LIMIT = ZERO - LIMIT;
 
 		if(num_channels == 2) {
-			for(int i = 0; i < bufferSize - delay; i = i + 2) {
+			for(int i = 0; i < bufferSize; i = i + 2) {
 				buffer[i] = buffer[i] > UPPER_LIMIT ? UPPER_LIMIT : buffer[i];
 				buffer[i] = buffer[i] < LOWER_LIMIT ? LOWER_LIMIT : buffer[i];
 			}
-			for(int i = 1; i < bufferSize - delay; i = i + 2) {
+			for(int i = 1; i < bufferSize; i = i + 2) {
 				buffer[i] = buffer[i] > UPPER_LIMIT ? UPPER_LIMIT : buffer[i];
 				buffer[i] = buffer[i] < LOWER_LIMIT ? LOWER_LIMIT : buffer[i];
 			}
 		}
 		if(num_channels == 1) {
-			for(int i = 0; i < bufferSize - delay; i++) {
+			for(int i = 0; i < bufferSize; i++) {
 				buffer[i] = buffer[i] > UPPER_LIMIT ? UPPER_LIMIT : buffer[i];
 				buffer[i] = buffer[i] < LOWER_LIMIT ? LOWER_LIMIT : buffer[i];
 			}
