@@ -1,0 +1,85 @@
+\hypertarget{classDataManager}{}\section{Data\+Manager Class Reference}
+\label{classDataManager}\index{Data\+Manager@{Data\+Manager}}
+
+
+{\ttfamily \#include $<$Data\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDataManager_ac2eec7fa355109eda41308e1de76d2a8}{Data\+Manager} ()
+\item 
+\hyperlink{classDataManager_aabcf390e86b29a8d73379627dc846d78}{Data\+Manager} (std\+::string filename)
+\item 
+void \hyperlink{classDataManager_a36752f6ca1c17b414ac256f90fe304e3}{load\+Wav\+Data} (std\+::string filename)
+\item 
+void \hyperlink{classDataManager_a90616c9fb33193856877a90e6583ef97}{view\+Metadata} ()
+\item 
+void \hyperlink{classDataManager_a7a63326e53ccb571e42a1bfc0befe90d}{edit\+Metadata} (std\+::string filename, char $\ast$title, char $\ast$artist, char $\ast$comments)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \hyperlink{classDataManager}{Data\+Manager} class that will manage data of wave files. Managing includes loading in wave file info, printing metadata, and editing metadata 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataManager_ac2eec7fa355109eda41308e1de76d2a8}\label{classDataManager_ac2eec7fa355109eda41308e1de76d2a8}} 
+\index{Data\+Manager@{Data\+Manager}!Data\+Manager@{Data\+Manager}}
+\index{Data\+Manager@{Data\+Manager}!Data\+Manager@{Data\+Manager}}
+\subsubsection{\texorpdfstring{Data\+Manager()}{DataManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+Manager\+::\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor of \hyperlink{classDataManager}{Data\+Manager} \mbox{\Hypertarget{classDataManager_aabcf390e86b29a8d73379627dc846d78}\label{classDataManager_aabcf390e86b29a8d73379627dc846d78}} 
+\index{Data\+Manager@{Data\+Manager}!Data\+Manager@{Data\+Manager}}
+\index{Data\+Manager@{Data\+Manager}!Data\+Manager@{Data\+Manager}}
+\subsubsection{\texorpdfstring{Data\+Manager()}{DataManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+Manager\+::\+Data\+Manager (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+Parameterized constructor to take in filename of wave file. It will load in the data/info from the specified wave file 
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ name of wave file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataManager_a7a63326e53ccb571e42a1bfc0befe90d}\label{classDataManager_a7a63326e53ccb571e42a1bfc0befe90d}} 
+\index{Data\+Manager@{Data\+Manager}!edit\+Metadata@{edit\+Metadata}}
+\index{edit\+Metadata@{edit\+Metadata}!Data\+Manager@{Data\+Manager}}
+\subsubsection{\texorpdfstring{edit\+Metadata()}{editMetadata()}}
+{\footnotesize\ttfamily void Data\+Manager\+::edit\+Metadata (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{char $\ast$}]{title,  }\item[{char $\ast$}]{artist,  }\item[{char $\ast$}]{comments }\end{DoxyParamCaption})}
+
+Edits existing metadata or creates new metadata if no current metadata exist 
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ name of wave file \\
+\hline
+{\em title} & -\/ user inputted title \\
+\hline
+{\em artist} & -\/ user inputted artist \\
+\hline
+{\em comments} & -\/ user inputted comments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataManager_a36752f6ca1c17b414ac256f90fe304e3}\label{classDataManager_a36752f6ca1c17b414ac256f90fe304e3}} 
+\index{Data\+Manager@{Data\+Manager}!load\+Wav\+Data@{load\+Wav\+Data}}
+\index{load\+Wav\+Data@{load\+Wav\+Data}!Data\+Manager@{Data\+Manager}}
+\subsubsection{\texorpdfstring{load\+Wav\+Data()}{loadWavData()}}
+{\footnotesize\ttfamily void Data\+Manager\+::load\+Wav\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+Loads in data from wave file and stores info into \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ name of wave file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataManager_a90616c9fb33193856877a90e6583ef97}\label{classDataManager_a90616c9fb33193856877a90e6583ef97}} 
+\index{Data\+Manager@{Data\+Manager}!view\+Metadata@{view\+Metadata}}
+\index{view\+Metadata@{view\+Metadata}!Data\+Manager@{Data\+Manager}}
+\subsubsection{\texorpdfstring{view\+Metadata()}{viewMetadata()}}
+{\footnotesize\ttfamily void Data\+Manager\+::view\+Metadata (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints metadata of file using a vector with elements of type \hyperlink{classWavData}{Wav\+Data} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data\+Manager.\+h\item 
+Data\+Manager.\+cpp\end{DoxyCompactItemize}

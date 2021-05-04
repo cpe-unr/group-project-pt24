@@ -1,0 +1,250 @@
+\hypertarget{classWavData}{}\section{Wav\+Data Class Reference}
+\label{classWavData}\index{Wav\+Data@{Wav\+Data}}
+
+
+{\ttfamily \#include $<$Wav\+Data.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWavData_a794e771764e4cc905f16a5fea4fcba48}{Wav\+Data} ()
+\item 
+\hyperlink{classWavData_ac1c36dbb380458c7b2be932a4fe18906}{Wav\+Data} (int new\+File\+Size, int new\+Sample\+Rate, int new\+Data\+Bytes, short int new\+Audio\+Format, short int new\+Num\+Channels, short int new\+Bits\+Per\+Sample, char $\ast$new\+Title, char $\ast$new\+Artist, char $\ast$new\+Comments)
+\item 
+int \hyperlink{classWavData_af9da99964b711cf96006be88c4757ecb}{get\+File\+Size} ()
+\item 
+void \hyperlink{classWavData_ae8e224b695a9430f270acf813c0bd012}{set\+File\+Size} (int new\+File\+Size)
+\item 
+int \hyperlink{classWavData_a5769f80ec72da1dc32e4d6debd4e5914}{get\+Sample\+Rate} ()
+\item 
+void \hyperlink{classWavData_a68f77a3b3c237f9c48640e6104410c11}{set\+Sample\+Rate} (int new\+Sample\+Rate)
+\item 
+int \hyperlink{classWavData_a381c10a100d7f22f94f31d9e3343da43}{get\+Data\+Bytes} ()
+\item 
+void \hyperlink{classWavData_aa85a563a922b0dab8ec415d8a025a167}{set\+Data\+Bytes} (int new\+Data\+Bytes)
+\item 
+short int \hyperlink{classWavData_a2ee1e47a093e5833807e98d246c81d98}{get\+Audio\+Format} ()
+\item 
+void \hyperlink{classWavData_a5574d225ec508750bdf2dc72791ab328}{set\+Audio\+Format} (short new\+Audio\+Format)
+\item 
+short int \hyperlink{classWavData_a3b63c1ee83b868ae73402a09d916bb48}{get\+Num\+Channels} ()
+\item 
+void \hyperlink{classWavData_a04c2de91d9807f47b23147b9ad905964}{set\+Num\+Channels} (short new\+Num\+Channels)
+\item 
+short int \hyperlink{classWavData_aa841d005b1060f436a28e032626745fa}{get\+Bits\+Per\+Sample} ()
+\item 
+void \hyperlink{classWavData_a95eabeda93c6515bb0c4541935261678}{set\+Bits\+Per\+Sample} (short new\+Bits\+Per\+Sample)
+\item 
+char $\ast$ \hyperlink{classWavData_af721e19f059afd5fa617c2cfce3d6526}{get\+Title} ()
+\item 
+void \hyperlink{classWavData_a396b417c300117a9697d3fdbcee5d250}{set\+Title} (char $\ast$new\+Title)
+\item 
+char $\ast$ \hyperlink{classWavData_a5b00c7a1857054f67fda34e5c4bb5802}{get\+Artist} ()
+\item 
+void \hyperlink{classWavData_aff3a19bb77f284e887a2c61345eed29b}{set\+Artist} (char $\ast$new\+Artist)
+\item 
+char $\ast$ \hyperlink{classWavData_a0db7155cf6cfe94c87b22fcb148fa349}{get\+Comments} ()
+\item 
+void \hyperlink{classWavData_a14c2e941261877c65214dc49203a6016}{set\+Comments} (char $\ast$new\+Comments)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \hyperlink{classWavData}{Wav\+Data} class that will be used store data of wave files 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWavData_a794e771764e4cc905f16a5fea4fcba48}\label{classWavData_a794e771764e4cc905f16a5fea4fcba48}} 
+\index{Wav\+Data@{Wav\+Data}!Wav\+Data@{Wav\+Data}}
+\index{Wav\+Data@{Wav\+Data}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{Wav\+Data()}{WavData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Wav\+Data\+::\+Wav\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor of \hyperlink{classWavData}{Wav\+Data} \mbox{\Hypertarget{classWavData_ac1c36dbb380458c7b2be932a4fe18906}\label{classWavData_ac1c36dbb380458c7b2be932a4fe18906}} 
+\index{Wav\+Data@{Wav\+Data}!Wav\+Data@{Wav\+Data}}
+\index{Wav\+Data@{Wav\+Data}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{Wav\+Data()}{WavData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Wav\+Data\+::\+Wav\+Data (\begin{DoxyParamCaption}\item[{int}]{new\+File\+Size,  }\item[{int}]{new\+Sample\+Rate,  }\item[{int}]{new\+Data\+Bytes,  }\item[{short int}]{new\+Audio\+Format,  }\item[{short int}]{new\+Num\+Channels,  }\item[{short int}]{new\+Bits\+Per\+Sample,  }\item[{char $\ast$}]{new\+Title,  }\item[{char $\ast$}]{new\+Artist,  }\item[{char $\ast$}]{new\+Comments }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Parameterized constructor that takes in and sets info read from wave file 
+\begin{DoxyParams}{Parameters}
+{\em new\+File\+Size} & -\/ size of wave file in integer bytes \\
+\hline
+{\em new\+Sample\+Rate} & -\/ sample rate; 32 byte integer \\
+\hline
+{\em new\+Data\+Bytes} & -\/ size of data in integer bytes \\
+\hline
+{\em new\+Audio\+Format} & -\/ format of wave file (1 is P\+CM); 2 byte integer \\
+\hline
+{\em new\+Num\+Channels} & -\/ number of channels; 2 byte integer \\
+\hline
+{\em new\+Bits\+Per\+Sample} & -\/ bits per sample \\
+\hline
+{\em new\+Title} & -\/ title \\
+\hline
+{\em new\+Artist} & -\/ artist \\
+\hline
+{\em new\+Comments} & -\/ comments \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWavData_a5b00c7a1857054f67fda34e5c4bb5802}\label{classWavData_a5b00c7a1857054f67fda34e5c4bb5802}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Artist@{get\+Artist}}
+\index{get\+Artist@{get\+Artist}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Artist()}{getArtist()}}
+{\footnotesize\ttfamily char $\ast$ Wav\+Data\+::get\+Artist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get artist in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_a2ee1e47a093e5833807e98d246c81d98}\label{classWavData_a2ee1e47a093e5833807e98d246c81d98}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Audio\+Format@{get\+Audio\+Format}}
+\index{get\+Audio\+Format@{get\+Audio\+Format}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Audio\+Format()}{getAudioFormat()}}
+{\footnotesize\ttfamily short int Wav\+Data\+::get\+Audio\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get audio format in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_aa841d005b1060f436a28e032626745fa}\label{classWavData_aa841d005b1060f436a28e032626745fa}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Bits\+Per\+Sample@{get\+Bits\+Per\+Sample}}
+\index{get\+Bits\+Per\+Sample@{get\+Bits\+Per\+Sample}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Bits\+Per\+Sample()}{getBitsPerSample()}}
+{\footnotesize\ttfamily short int Wav\+Data\+::get\+Bits\+Per\+Sample (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get bits per sample in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_a0db7155cf6cfe94c87b22fcb148fa349}\label{classWavData_a0db7155cf6cfe94c87b22fcb148fa349}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Comments@{get\+Comments}}
+\index{get\+Comments@{get\+Comments}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Comments()}{getComments()}}
+{\footnotesize\ttfamily char $\ast$ Wav\+Data\+::get\+Comments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get comments in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_a381c10a100d7f22f94f31d9e3343da43}\label{classWavData_a381c10a100d7f22f94f31d9e3343da43}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Data\+Bytes@{get\+Data\+Bytes}}
+\index{get\+Data\+Bytes@{get\+Data\+Bytes}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Data\+Bytes()}{getDataBytes()}}
+{\footnotesize\ttfamily int Wav\+Data\+::get\+Data\+Bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get size of data in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_af9da99964b711cf96006be88c4757ecb}\label{classWavData_af9da99964b711cf96006be88c4757ecb}} 
+\index{Wav\+Data@{Wav\+Data}!get\+File\+Size@{get\+File\+Size}}
+\index{get\+File\+Size@{get\+File\+Size}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+File\+Size()}{getFileSize()}}
+{\footnotesize\ttfamily int Wav\+Data\+::get\+File\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get file size in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_a3b63c1ee83b868ae73402a09d916bb48}\label{classWavData_a3b63c1ee83b868ae73402a09d916bb48}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Num\+Channels@{get\+Num\+Channels}}
+\index{get\+Num\+Channels@{get\+Num\+Channels}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Num\+Channels()}{getNumChannels()}}
+{\footnotesize\ttfamily short int Wav\+Data\+::get\+Num\+Channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get number of channels in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_a5769f80ec72da1dc32e4d6debd4e5914}\label{classWavData_a5769f80ec72da1dc32e4d6debd4e5914}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Sample\+Rate@{get\+Sample\+Rate}}
+\index{get\+Sample\+Rate@{get\+Sample\+Rate}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Sample\+Rate()}{getSampleRate()}}
+{\footnotesize\ttfamily int Wav\+Data\+::get\+Sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get sample rate in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_af721e19f059afd5fa617c2cfce3d6526}\label{classWavData_af721e19f059afd5fa617c2cfce3d6526}} 
+\index{Wav\+Data@{Wav\+Data}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{get\+Title()}{getTitle()}}
+{\footnotesize\ttfamily char $\ast$ Wav\+Data\+::get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get title in \hyperlink{classWavData}{Wav\+Data} object \mbox{\Hypertarget{classWavData_aff3a19bb77f284e887a2c61345eed29b}\label{classWavData_aff3a19bb77f284e887a2c61345eed29b}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Artist@{set\+Artist}}
+\index{set\+Artist@{set\+Artist}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Artist()}{setArtist()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Artist (\begin{DoxyParamCaption}\item[{char $\ast$}]{new\+Artist }\end{DoxyParamCaption})}
+
+Sets artist to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Artist} & -\/ artist \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a5574d225ec508750bdf2dc72791ab328}\label{classWavData_a5574d225ec508750bdf2dc72791ab328}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Audio\+Format@{set\+Audio\+Format}}
+\index{set\+Audio\+Format@{set\+Audio\+Format}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Audio\+Format()}{setAudioFormat()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Audio\+Format (\begin{DoxyParamCaption}\item[{short}]{new\+Audio\+Format }\end{DoxyParamCaption})}
+
+Sets audio format to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Audio\+Format} & -\/ audio format \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a95eabeda93c6515bb0c4541935261678}\label{classWavData_a95eabeda93c6515bb0c4541935261678}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Bits\+Per\+Sample@{set\+Bits\+Per\+Sample}}
+\index{set\+Bits\+Per\+Sample@{set\+Bits\+Per\+Sample}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Bits\+Per\+Sample()}{setBitsPerSample()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Bits\+Per\+Sample (\begin{DoxyParamCaption}\item[{short}]{new\+Bits\+Per\+Sample }\end{DoxyParamCaption})}
+
+Sets bits per sample to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Bits\+Per\+Sample} & -\/ bits per sample \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a14c2e941261877c65214dc49203a6016}\label{classWavData_a14c2e941261877c65214dc49203a6016}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Comments@{set\+Comments}}
+\index{set\+Comments@{set\+Comments}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Comments()}{setComments()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Comments (\begin{DoxyParamCaption}\item[{char $\ast$}]{new\+Comments }\end{DoxyParamCaption})}
+
+Sets comments to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Comments} & -\/ comments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_aa85a563a922b0dab8ec415d8a025a167}\label{classWavData_aa85a563a922b0dab8ec415d8a025a167}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Data\+Bytes@{set\+Data\+Bytes}}
+\index{set\+Data\+Bytes@{set\+Data\+Bytes}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Data\+Bytes()}{setDataBytes()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Data\+Bytes (\begin{DoxyParamCaption}\item[{int}]{new\+Data\+Bytes }\end{DoxyParamCaption})}
+
+Sets size of data to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Data\+Bytes} & -\/ size of data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_ae8e224b695a9430f270acf813c0bd012}\label{classWavData_ae8e224b695a9430f270acf813c0bd012}} 
+\index{Wav\+Data@{Wav\+Data}!set\+File\+Size@{set\+File\+Size}}
+\index{set\+File\+Size@{set\+File\+Size}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+File\+Size()}{setFileSize()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+File\+Size (\begin{DoxyParamCaption}\item[{int}]{new\+File\+Size }\end{DoxyParamCaption})}
+
+Sets file size to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+File\+Size} & -\/ file size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a04c2de91d9807f47b23147b9ad905964}\label{classWavData_a04c2de91d9807f47b23147b9ad905964}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Num\+Channels@{set\+Num\+Channels}}
+\index{set\+Num\+Channels@{set\+Num\+Channels}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Num\+Channels()}{setNumChannels()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Num\+Channels (\begin{DoxyParamCaption}\item[{short}]{new\+Num\+Channels }\end{DoxyParamCaption})}
+
+Sets number of channels to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Num\+Channels} & -\/ number of channels \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a68f77a3b3c237f9c48640e6104410c11}\label{classWavData_a68f77a3b3c237f9c48640e6104410c11}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Sample\+Rate@{set\+Sample\+Rate}}
+\index{set\+Sample\+Rate@{set\+Sample\+Rate}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Sample\+Rate()}{setSampleRate()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Sample\+Rate (\begin{DoxyParamCaption}\item[{int}]{new\+Sample\+Rate }\end{DoxyParamCaption})}
+
+Sets sample rate to store in \hyperlink{classWavData}{Wav\+Data} 
+\begin{DoxyParams}{Parameters}
+{\em new\+Sample\+Rate} & -\/ sample rate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWavData_a396b417c300117a9697d3fdbcee5d250}\label{classWavData_a396b417c300117a9697d3fdbcee5d250}} 
+\index{Wav\+Data@{Wav\+Data}!set\+Title@{set\+Title}}
+\index{set\+Title@{set\+Title}!Wav\+Data@{Wav\+Data}}
+\subsubsection{\texorpdfstring{set\+Title()}{setTitle()}}
+{\footnotesize\ttfamily void Wav\+Data\+::set\+Title (\begin{DoxyParamCaption}\item[{char $\ast$}]{new\+Title }\end{DoxyParamCaption})}
+
+Sets title to store in \hyperlink{classWavData}{Wav\+Data} object 
+\begin{DoxyParams}{Parameters}
+{\em new\+Title} & -\/ title \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Wav\+Data.\+h\item 
+Wav\+Data.\+cpp\end{DoxyCompactItemize}

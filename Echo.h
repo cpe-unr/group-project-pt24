@@ -49,7 +49,7 @@ public:
 			}
 		}
 		if(num_channels == 1) {
-			for(int i = 0; i < bufferSize - delay; i = i++) {
+			for(int i = 0; i < bufferSize - delay; i++) {
 				adj_i = (float)(buffer[i + delay] - ZERO);
 				adj_delayed_i = (float)(buffer[i+delay] - ZERO);
 				val = adj_i * echoLevel + adj_delayed_i * SCALE_FACTOR + ZERO;

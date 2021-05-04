@@ -1,0 +1,43 @@
+\hypertarget{classFilesystem}{}\section{Filesystem Class Reference}
+\label{classFilesystem}\index{Filesystem@{Filesystem}}
+
+
+{\ttfamily \#include $<$Filesystem.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classFilesystem_af882dcc28813a353ee20d067561abd50}{none\+Of\+The\+Current\+Files} (string new\+File)
+\item 
+string \hyperlink{classFilesystem_a65a5f56906afc1a8f3def4b5073231ba}{chosen\+File} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the file system class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFilesystem_a65a5f56906afc1a8f3def4b5073231ba}\label{classFilesystem_a65a5f56906afc1a8f3def4b5073231ba}} 
+\index{Filesystem@{Filesystem}!chosen\+File@{chosen\+File}}
+\index{chosen\+File@{chosen\+File}!Filesystem@{Filesystem}}
+\subsubsection{\texorpdfstring{chosen\+File()}{chosenFile()}}
+{\footnotesize\ttfamily string Filesystem\+::chosen\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints all the files in the external directory, lets user choose the file which they would like to process. \begin{DoxyReturn}{Returns}
+Returns the name of file user wants to use. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFilesystem_af882dcc28813a353ee20d067561abd50}\label{classFilesystem_af882dcc28813a353ee20d067561abd50}} 
+\index{Filesystem@{Filesystem}!none\+Of\+The\+Current\+Files@{none\+Of\+The\+Current\+Files}}
+\index{none\+Of\+The\+Current\+Files@{none\+Of\+The\+Current\+Files}!Filesystem@{Filesystem}}
+\subsubsection{\texorpdfstring{none\+Of\+The\+Current\+Files()}{noneOfTheCurrentFiles()}}
+{\footnotesize\ttfamily bool Filesystem\+::none\+Of\+The\+Current\+Files (\begin{DoxyParamCaption}\item[{string}]{new\+File }\end{DoxyParamCaption})}
+
+Checks to see that input filename does not match any files that exist already, if it does it returns false, if it does not, it returns true. \begin{DoxyReturn}{Returns}
+Boolean condition. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Filesystem.\+h\item 
+Filesystem.\+cpp\end{DoxyCompactItemize}

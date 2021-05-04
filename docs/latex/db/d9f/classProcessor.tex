@@ -1,0 +1,51 @@
+\hypertarget{classProcessor}{}\section{Processor$<$ T $>$ Class Template Reference}
+\label{classProcessor}\index{Processor$<$ T $>$@{Processor$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Processor.\+h$>$}
+
+
+
+Inheritance diagram for Processor$<$ T $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}{process\+Buffer} (T $\ast$buffer, int buffer\+Size, int bit\+Type, short num\+\_\+channels)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Processor$<$ T $>$}
+
+This is the template interface processor class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}\label{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}} 
+\index{Processor@{Processor}!process\+Buffer@{process\+Buffer}}
+\index{process\+Buffer@{process\+Buffer}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{process\+Buffer()}{processBuffer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \hyperlink{classProcessor}{Processor}$<$ T $>$\+::process\+Buffer (\begin{DoxyParamCaption}\item[{T $\ast$}]{buffer,  }\item[{int}]{buffer\+Size,  }\item[{int}]{bit\+Type,  }\item[{short}]{num\+\_\+channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function to process buffers. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & Buffer that has already been read. \\
+\hline
+\mbox{\tt in}  & {\em buffer\+Size} & Size of Buffer. \\
+\hline
+\mbox{\tt in}  & {\em bit\+Type} & Bit type of buffer (8 or 16, could be any number). \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+channels} & Number of channels so that proccessor can process multiple stereo wav files. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classEcho_a2519b0af7621b4c3bb3b685a5a1886a8}{Echo$<$ T $>$}, \hyperlink{classNoiseGate_a774ccb42e6f07df6debb1965beaa7bcf}{Noise\+Gate$<$ T $>$}, \hyperlink{classNormalize_a41964a5f116feee301f14403ec8a57ff}{Normalize$<$ T $>$}, and \hyperlink{classLimiter_a1388f0a0c881ac7e3be1b834db9257c1}{Limiter$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Processor.\+h\end{DoxyCompactItemize}

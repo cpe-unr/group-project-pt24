@@ -1,0 +1,72 @@
+\hypertarget{classEcho}{}\section{Echo$<$ T $>$ Class Template Reference}
+\label{classEcho}\index{Echo$<$ T $>$@{Echo$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Echo.\+h$>$}
+
+
+
+Inheritance diagram for Echo$<$ T $>$\+:
+% FIG 0
+
+
+Collaboration diagram for Echo$<$ T $>$\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classEcho_af348cd7f23248e72046c5d006d3adca7}{Echo} (int delay)
+\item 
+void \hyperlink{classEcho_a2519b0af7621b4c3bb3b685a5a1886a8}{process\+Buffer} (T $\ast$buffer, int buffer\+Size, int bit\+Type, short num\+\_\+channels)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Echo$<$ T $>$}
+
+This is the template echo class which inherits from the processor class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEcho_af348cd7f23248e72046c5d006d3adca7}\label{classEcho_af348cd7f23248e72046c5d006d3adca7}} 
+\index{Echo@{Echo}!Echo@{Echo}}
+\index{Echo@{Echo}!Echo@{Echo}}
+\subsubsection{\texorpdfstring{Echo()}{Echo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{classEcho}{Echo}$<$ T $>$\+::\hyperlink{classEcho}{Echo} (\begin{DoxyParamCaption}\item[{int}]{delay }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor for the \hyperlink{classEcho}{Echo} class. 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classEcho_a2519b0af7621b4c3bb3b685a5a1886a8}\label{classEcho_a2519b0af7621b4c3bb3b685a5a1886a8}} 
+\index{Echo@{Echo}!process\+Buffer@{process\+Buffer}}
+\index{process\+Buffer@{process\+Buffer}!Echo@{Echo}}
+\subsubsection{\texorpdfstring{process\+Buffer()}{processBuffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classEcho}{Echo}$<$ T $>$\+::process\+Buffer (\begin{DoxyParamCaption}\item[{T $\ast$}]{buffer,  }\item[{int}]{buffer\+Size,  }\item[{int}]{bit\+Type,  }\item[{short}]{num\+\_\+channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Processes buffer so that an \hyperlink{classEcho}{Echo} is present. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & Buffer that has already been read. \\
+\hline
+\mbox{\tt in}  & {\em buffer\+Size} & Size of Buffer. \\
+\hline
+\mbox{\tt in}  & {\em bit\+Type} & Bit type of buffer (8 or 16, could be any number). \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+channels} & Number of channels so that proccessor can process multiple stereo wav files. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}{Processor$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Echo.\+h\end{DoxyCompactItemize}

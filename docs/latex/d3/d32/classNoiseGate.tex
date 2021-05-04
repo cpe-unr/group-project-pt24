@@ -1,0 +1,72 @@
+\hypertarget{classNoiseGate}{}\section{Noise\+Gate$<$ T $>$ Class Template Reference}
+\label{classNoiseGate}\index{Noise\+Gate$<$ T $>$@{Noise\+Gate$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Noise\+Gate.\+h$>$}
+
+
+
+Inheritance diagram for Noise\+Gate$<$ T $>$\+:
+% FIG 0
+
+
+Collaboration diagram for Noise\+Gate$<$ T $>$\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNoiseGate_acd5d37cf50b2190ec2ab05cb854b7bf9}{Noise\+Gate} (T threshold)
+\item 
+void \hyperlink{classNoiseGate_a774ccb42e6f07df6debb1965beaa7bcf}{process\+Buffer} (T $\ast$buffer, int buffer\+Size, int bit\+Type, short num\+\_\+channels)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Noise\+Gate$<$ T $>$}
+
+This is the template noise gate class which inherits from the processor class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNoiseGate_acd5d37cf50b2190ec2ab05cb854b7bf9}\label{classNoiseGate_acd5d37cf50b2190ec2ab05cb854b7bf9}} 
+\index{Noise\+Gate@{Noise\+Gate}!Noise\+Gate@{Noise\+Gate}}
+\index{Noise\+Gate@{Noise\+Gate}!Noise\+Gate@{Noise\+Gate}}
+\subsubsection{\texorpdfstring{Noise\+Gate()}{NoiseGate()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{classNoiseGate}{Noise\+Gate}$<$ T $>$\+::\hyperlink{classNoiseGate}{Noise\+Gate} (\begin{DoxyParamCaption}\item[{T}]{threshold }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor for the \hyperlink{classNoiseGate}{Noise\+Gate} class. 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classNoiseGate_a774ccb42e6f07df6debb1965beaa7bcf}\label{classNoiseGate_a774ccb42e6f07df6debb1965beaa7bcf}} 
+\index{Noise\+Gate@{Noise\+Gate}!process\+Buffer@{process\+Buffer}}
+\index{process\+Buffer@{process\+Buffer}!Noise\+Gate@{Noise\+Gate}}
+\subsubsection{\texorpdfstring{process\+Buffer()}{processBuffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classNoiseGate}{Noise\+Gate}$<$ T $>$\+::process\+Buffer (\begin{DoxyParamCaption}\item[{T $\ast$}]{buffer,  }\item[{int}]{buffer\+Size,  }\item[{int}]{bit\+Type,  }\item[{short}]{num\+\_\+channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Processes buffer so that all audio above or below a range is set to zero (eliminated). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & Buffer that has already been read. \\
+\hline
+\mbox{\tt in}  & {\em buffer\+Size} & Size of Buffer. \\
+\hline
+\mbox{\tt in}  & {\em bit\+Type} & Bit type of buffer (8 or 16, could be any number). \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+channels} & Number of channels so that proccessor can process multiple stereo wav files. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}{Processor$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Noise\+Gate.\+h\end{DoxyCompactItemize}

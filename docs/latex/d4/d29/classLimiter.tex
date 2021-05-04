@@ -1,0 +1,55 @@
+\hypertarget{classLimiter}{}\section{Limiter$<$ T $>$ Class Template Reference}
+\label{classLimiter}\index{Limiter$<$ T $>$@{Limiter$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Limiter.\+h$>$}
+
+
+
+Inheritance diagram for Limiter$<$ T $>$\+:
+% FIG 0
+
+
+Collaboration diagram for Limiter$<$ T $>$\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLimiter_a1388f0a0c881ac7e3be1b834db9257c1}{process\+Buffer} (T $\ast$buffer, int buffer\+Size, int bit\+Type, short num\+\_\+channels)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Limiter$<$ T $>$}
+
+This is the template limiter class which inherits from the processor class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLimiter_a1388f0a0c881ac7e3be1b834db9257c1}\label{classLimiter_a1388f0a0c881ac7e3be1b834db9257c1}} 
+\index{Limiter@{Limiter}!process\+Buffer@{process\+Buffer}}
+\index{process\+Buffer@{process\+Buffer}!Limiter@{Limiter}}
+\subsubsection{\texorpdfstring{process\+Buffer()}{processBuffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classLimiter}{Limiter}$<$ T $>$\+::process\+Buffer (\begin{DoxyParamCaption}\item[{T $\ast$}]{buffer,  }\item[{int}]{buffer\+Size,  }\item[{int}]{bit\+Type,  }\item[{short}]{num\+\_\+channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Processes buffer so that any audio that is higher than the rest is changed to a lower value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & Buffer that has already been read. \\
+\hline
+\mbox{\tt in}  & {\em buffer\+Size} & Size of Buffer. \\
+\hline
+\mbox{\tt in}  & {\em bit\+Type} & Bit type of buffer (8 or 16, could be any number). \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+channels} & Number of channels so that proccessor can process multiple stereo wav files. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classProcessor_a48316eb3ee1863621b4f89ae23fc110c}{Processor$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Limiter.\+h\end{DoxyCompactItemize}
