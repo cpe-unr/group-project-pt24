@@ -9,11 +9,15 @@
 #include <fstream>
 #include <cstring>
 #include <string>
+#include "WaveHeader.h"
 #include "WavData.h"
+#include "Wav.h"
 
 class ModifyMD{
+	Wav wav;
 public:
-	void writeNewMetadata(std::string, std::string, std::string, std::string);
+	void writeNewMetadata(std::string, char*, char*, char*);
+	
 };
 
 #endif

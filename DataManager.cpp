@@ -6,6 +6,8 @@
 
 using namespace std;
 
+DataManager::DataManager(){}
+
 DataManager::DataManager(string filename){
 	loadWavData(filename);
 }
@@ -16,6 +18,8 @@ void DataManager::loadWavData(string filename){
 		file.read((char*)&waveHeader, sizeof(wav_header));
 		
 		WavData wavData;
+		
+		//technical info
 		wavData.setFileSize(waveHeader.wav_size);
 		wavData.setSampleRate(waveHeader.sample_rate);
 		wavData.setDataBytes(waveHeader.data_bytes);
@@ -23,7 +27,9 @@ void DataManager::loadWavData(string filename){
 		wavData.setNumChannels(waveHeader.num_channels);
 		wavData.setBitsPerSample(waveHeader.bit_depth);
 		
-		wav.readFile(filename); //idk if needed
+		//metadata
+		wav.readFile(filename);
+		
 		wavData.setTitle(wav.getTitle());
 		wavData.setArtist(wav.getArtist());
 		wavData.setComments(wav.getComments());
@@ -39,7 +45,9 @@ void DataManager::viewMetadata(){
 	metadataPrinter.printMetadata(dataList);
 }
 
-/*void DataManager::editMetadata(string filename, string title, string artist, string comments){
+void DataManager::editMetadata(string filename, char* title, char* artist, char* comments){	
+	loadWavData(filename);	
 	ModifyMD modifyMD;
 	modifyMD.writeNewMetadata(filename, title, artist, comments);
-}*/
+	loadWavData(filename);
+}

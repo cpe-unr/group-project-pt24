@@ -1,11 +1,21 @@
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+/** @file Wav.h
+* @brief Wav class
+*
+* This class contains prototypes and variables used to access and create data for wave files
+*
+* @author Jamie Lee
+* @author Nikhil Sharma
+*/
+
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/27/2021
 
-#ifndef WAV_H
-#define WAV_H
+#ifndef DOXYGEN_WAV_H
+#define DOXYGEN_WAV_H
 
 #include <string>
+#include <cstring>
 #include <fstream>
 #include <iostream>
 #include "WaveHeader.h"
@@ -24,23 +34,83 @@ class Wav{
 public:
 	wav_header waveHeader;
 
+	/** 
+	* Reads Wave file and its techinical information/data/metadata
+	* @param filename - name of wave file to read
+	*/
 	void readFile(const std::string &fileName);
+
+	/** 
+	* Writes new Wave file with new data
+	* @param outFilename - name of wave file to write
+	*/
 	void writeFile(const std::string &outFileName);
 
+	/** 
+	* Get buffer for 8-bit files
+	*/
 	unsigned char *getBuffer();
+
+	/** 
+	* Get buffer for 16-bit files
+	*/
 	unsigned short *getBufferShort();
+
+	/** 
+	* Get buffer size of wave file
+	*/
 	int getBufferSize() const;
 
+	/** 
+	* Get number of channels of wave file
+	*/
 	short getNumChannels();
 	
+	/** 
+	* Get title of wave file
+	*/
 	char *getTitle();
+	/** 
+	* Set title of wave file
+	*@param newTitle - new title
+	*/
+	void setTitle(char* newTitle);
+
+	/** 
+	* Get artist of wave file
+	*/
 	char *getArtist();
+	/** 
+	* Set artist of wave file
+	*@param newArtist - new artist
+	*/
+	void setArtist(char* newArtist);
+
+	/** 
+	* Get comments of wave file
+	*/
 	char *getComments();
+	/** 
+	* Set comments of wave file
+	*@param newComments - new comments
+	*/
+	void setComments(char* newComments);
 
+	/** 
+	* Get bit type of wave file
+	*/
 	short getBitType();
-	void setBitType(short);
 
+	/** 
+	* Set bit type of wave file
+	*@param newBitType - new bit type
+	*/
+	void setBitType(short newBitType);
+
+	/** 
+	* Destructor to delete dynamically allocted memory
+	*/
 	virtual ~Wav();	
 };
 
-#endif //WAV_H
+#endif //DOXYGEN_WAV_H

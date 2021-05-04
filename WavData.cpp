@@ -77,8 +77,3 @@ char *WavData::getComments(){
 void WavData::setComments(char *newComments){
 	comments = newComments;
 }
-
-//MetadataPrinter metaprinter;
-//void WavData::printMD() {
-//	metaprinter.printMetadata();
-//}

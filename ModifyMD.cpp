@@ -6,29 +6,39 @@
 
 using namespace std;
 
-void ModifyMD::writeNewMetadata(string filename, string newTitle, string newArtist, string newComments){
-	const int MAX_LENGTH = 50;
-	
-	fstream updateFile(fileName, ios::in | ios::ate | ios::binary);
-	
+void ModifyMD::writeNewMetadata(string filename, char* newTitle, char* newArtist, char* newComments){
+	fstream updateFile(filename, ios::in | ios::binary | ios::out | ios::ate);
 	if(updateFile.is_open()){
- 		updateFile.read((char*)&waveHeader, sizeof(wav_header));
- 			
- 		//if(waveHeader.info_header.find("INFO") != string::npos){
- 			char *titleToModify = waveHeader.INAM_data;
- 			strncpy(titleToModify, newTitle.c_str(), MAX_LENGTH); 
- 				
-			char *artistToModify = waveHeader.IART_data;
- 			strncpy(artistToModify, newArtist.c_str(), MAX_LENGTH); 
- 			
- 			char *commentsToModify = waveHeader.ICMT_data;
- 			strncpy(commentsToModify, newComments.c_str(), MAX_LENGTH);	
-			
-			updateFile.write((char*)&waveHeader, sizeof(wav_header));
-		//}
-		//else{
+		wav.readFile(filename);
 		
-		//}
+		
+		
+		
+		/*char *titleToModify = wav.getTitle();
+		INAM_data Title;
+		updateFile.read((char*)&Title, sizeof(INAM_data));
+		updateFile.seekg(-(sizeof(Title)), ios::cur);
+		strncpy(titleToModify, newTitle, sizeof(newTitle));
+		updateFile.write((char*)&Title, sizeof(INAM_data));
+		wav.setTitle(titleToModify);
+		
+ 
+		//wav.setTitle(newTitle);
+ 		//strncpy(titleToModify, newTitle.c_str(), newTitle.size()); 
+ 		
+ 			
+ 		//cout << wav.getTitle() << endl;
+ 			
+ 		/*updateFile.read((char*)&Artist, sizeof(IART_data));	
+		char *artistToModify = wav.getArtist();
+ 		strncpy(artistToModify, newArtist.c_str(), sizeof(newArtist)); 
+ 		updateFile.write((char*)&artistToModify, sizeof(newArtist));
+ 			
+ 		updateFile.read((char*)&Comments, sizeof(ICMT_data));
+ 		char *commentsToModify = wav.getComments();
+ 		strncpy(commentsToModify, newComments.c_str(), sizeof(newComments));	
+		updateFile.write((char*)&commentsToModify, sizeof(newComments));
+		//} */
 			
 		updateFile.close();
 	}

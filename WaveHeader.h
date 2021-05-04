@@ -1,9 +1,18 @@
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+/** @file WavHeader.h
+* @brief Header and metadata for wave files
+*
+* These structs take in header and metadata info of wave files
+*
+* @author Jamie Lee
+* @author Nikhil Sharma
+*/
+
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/27/2021
 
-#ifndef WAVEHEADER_H
-#define WAVEHEADER_H
+#ifndef DOXYGEN_WAVEHEADER_H
+#define DOXYGEN_WAVEHEADER_H
 
 // wav_header copied from https://gist.github.com/Jon-Schneider/8b7c53d27a7a13346a643dac9c19d34f
 /*
@@ -24,6 +33,9 @@
 41-44	File size (data)	Size of the data section.
  */
 
+/**
+* Header of wave file containing techincal information
+*/
 typedef struct wav_header{
 	// RIFF Header
 	char riff_header[4]; // Contains "RIFF"
@@ -45,28 +57,40 @@ typedef struct wav_header{
 	int data_bytes; // Number of bytes in data. Number of samples * num_channels * sample byte size
 } wav_header;
 	
+/**
+* Header of metadata chunk of wave file
+*/
 typedef struct metadata_header{
 	char list_header[4]; // Contains "LIST"
 	int list_chunk_size;
 	char info_header[4]; // Contains "INFO"
 } metadata_header;
-	
+
+/**
+* Metadata subchunk containing title of wave file
+*/	
 typedef struct INAM_data{
 	char INAM_header[4]; // Info ID Title
 	int INAM_size; // Number of characters in subchunk
 	//char title[]; // Actual Text/data
 } INAM_data;
-	
+
+/**
+* Metadata subchunk containing artist of wave file
+*/	
 typedef struct IART_data{
 	char IART_header[4]; //Artist
 	int IART_size;
 	//char artist[];
 } IART_data;
-	
+
+/**
+* Metadata subchunk containing comments of wave file
+*/	
 typedef struct ICMT_data{
 	char ICMT_header[4]; //Comments
 	int ICMT_size;
 	//char ICMT_data[];
 } ICMT_data;
 
-#endif //WAVEHEADER_H
+#endif //DOXYGEN_WAVEHEADER_H

@@ -1,4 +1,4 @@
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/27/2021
 
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Wav::readFile(const std::string &fileName) {
+void Wav::readFile(const string &fileName) {
 	ifstream file(fileName, ios::binary | ios::in);
 	if(file.is_open()){
 		file.read((char*)&waveHeader, sizeof(wav_header));
@@ -37,12 +37,11 @@ void Wav::readFile(const std::string &fileName) {
 		file.read((char*)comments, Comments.ICMT_size);
 		
 		/*
-		
-		testing values it works finally!!! ;o;
+		//testing values it works finally!!! ;o;
 		
 		cout << getBufferSize() << endl;
-		cout << metaData.list_header << endl << metaData.list_chunk_size << endl;
-		cout << metaData.info_header << endl;
+		cout << Metadata.list_header << endl << Metadata.list_chunk_size << endl;
+		cout << Metadata.info_header << endl;
 		cout 	<< Title.INAM_header << endl 
 			<< Title.INAM_size << endl
 			<< title << endl;
@@ -52,8 +51,8 @@ void Wav::readFile(const std::string &fileName) {
 		cout	<< Comments.ICMT_header << endl
 			<< Comments.ICMT_size << endl
 			<< comments << endl;
-			
-		*/
+		*/	
+		
 		
 		file.close();
 	}
@@ -68,7 +67,7 @@ unsigned short *Wav::getBufferShort() {
 	return bufferShort;
 }
 
-void Wav::writeFile(const std::string &outFileName) {
+void Wav::writeFile(const string &outFileName) {
 	ofstream outFile(outFileName, ios::out | ios::binary);
 	outFile.write((char*)&waveHeader,sizeof(wav_header));
 	setBitType(waveHeader.bit_depth);
@@ -80,6 +79,11 @@ void Wav::writeFile(const std::string &outFileName) {
 	if(bitType == 16){
 		outFile.write(reinterpret_cast<char*>(bufferShort), waveHeader.data_bytes);
 	}
+	
+	/*outFile.write((char*)&Metadata,sizeof(metadata_header));
+	outFile.write((char*)&Title,sizeof(INAM_data));
+	outFile.write((char*)&Artist,sizeof(IART_data));
+	outFile.write((char*)&Comments,sizeof(ICMT_data));*/
 	
 	outFile.close();
 }
@@ -109,12 +113,24 @@ char *Wav::getTitle(){
 	return title;
 }
 
+void Wav::setTitle(char *newTitle){
+	strcpy(title, newTitle);
+}
+
 char *Wav::getArtist(){
 	return artist;
 }
 
+void Wav::setArtist(char *newArtist){
+	strcpy(artist, newArtist);
+}
+
 char *Wav::getComments(){
 	return comments;
+}
+
+void Wav::setComments(char *newComments){
+	strcpy(comments, newComments);
 }
  
 short Wav::getBitType(){
