@@ -35,25 +35,7 @@ void Wav::readFile(const string &fileName) {
 		file.read((char*)&Comments, sizeof(ICMT_data));
 		comments = new char[Comments.ICMT_size];
 		file.read((char*)comments, Comments.ICMT_size);
-		
-		/*
-		//testing values it works finally!!! ;o;
-		
-		cout << getBufferSize() << endl;
-		cout << Metadata.list_header << endl << Metadata.list_chunk_size << endl;
-		cout << Metadata.info_header << endl;
-		cout 	<< Title.INAM_header << endl 
-			<< Title.INAM_size << endl
-			<< title << endl;
-		cout 	<< Artist.IART_header << endl
-			<< Artist.IART_size << endl
-			<< artist << endl;
-		cout	<< Comments.ICMT_header << endl
-			<< Comments.ICMT_size << endl
-			<< comments << endl;
-		*/	
-		
-		
+	
 		file.close();
 	}
 }
@@ -79,11 +61,6 @@ void Wav::writeFile(const string &outFileName) {
 	if(bitType == 16){
 		outFile.write(reinterpret_cast<char*>(bufferShort), waveHeader.data_bytes);
 	}
-	
-	/*outFile.write((char*)&Metadata,sizeof(metadata_header));
-	outFile.write((char*)&Title,sizeof(INAM_data));
-	outFile.write((char*)&Artist,sizeof(IART_data));
-	outFile.write((char*)&Comments,sizeof(ICMT_data));*/
 	
 	outFile.close();
 }

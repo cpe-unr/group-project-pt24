@@ -70,18 +70,18 @@ typedef struct INAM_data{
 * Metadata subchunk containing artist of wave file
 */	
 typedef struct IART_data{
-	char IART_header[4]; //Artist
+	char IART_header[4]; 
 	int IART_size;
-	//char artist[];
+	//char artist[]; //Artist 
 } IART_data;
 
 /**
 * Metadata subchunk containing comments of wave file
 */	
 typedef struct ICMT_data{
-	char ICMT_header[4]; //Comments
+	char ICMT_header[4]; 
 	int ICMT_size;
-	//char ICMT_data[];
+	//char ICMT_data[]; //Comments
 } ICMT_data;
 
 #endif //WAVEHEADER_H

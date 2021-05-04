@@ -28,6 +28,13 @@ public:
 	*/
 	void writeNewMetadata(std::string filename, char* userTitle, char* userArtist, char* userComments);
 	
+	/**
+	* Writes individual subchunks of metadata into the file
+	* @param stream - file stream
+	* @param subChunk - subChunk ID (INAM, IART, ICMT)
+	* @param data - subChunk data (Title, Artist, Comments)
+	*/
+	void writeChunk(std::ofstream &stream, char* subChunk, char* data);
 };
 
 #endif //MODIFYMD_H
