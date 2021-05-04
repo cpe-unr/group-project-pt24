@@ -4,15 +4,30 @@
 #include "Processor.h"
 #include <math.h>
 #include <utility>
-
+/**
+ * This is the template echo class which inherits from the processor class. 
+*/
 template<class T>
 class Echo : public Processor<T> {
 private:
 	int delay;
 public:
+
+/**
+ *
+ * Constructor for the Echo class. 
+ * \param[i] delay  the delay of the sample
+*/
 	explicit Echo(int delay) : delay(delay) {
 	}
 
+/**
+ * Processes buffer so that an Echo is present.
+ * \param[in]     buffer       Buffer that has already been read.
+ * \param[in]     bufferSize   Size of Buffer.
+ * \param[in]     bitType      Bit type of buffer (8 or 16, could be any number).
+ * \param[in]     num_channels Number of channels so that proccessor can process multiple stereo wav files.
+*/
 	void processBuffer(T *buffer, int bufferSize, int bitType, short num_channels) {
 		static const T ZERO = (pow(2, bitType)/2);
 		static const float SCALE_FACTOR = 0.5f;

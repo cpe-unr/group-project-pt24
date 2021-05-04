@@ -1,4 +1,4 @@
-audiomanagement: filesystem.o menu.o wav.o  echo.o wavdata.o mdprint.o data_manager.o generatecsv.o main.cpp 
+audiomanagement: filesystem.o menu.o wav.o  echo.o wavdata.o mdprint.o data_manager.o generatecsv.o main.cpp
 	g++ -std=c++17 -o audiomanagement generateCSV.cpp Wav.cpp MetadataPrinter.cpp WavData.cpp DataManager.cpp Filesystem.cpp Menu.cpp main.cpp -lstdc++fs
 main.o: main.cpp
 	g++ -std=c++17 main.cpp

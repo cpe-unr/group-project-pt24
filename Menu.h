@@ -23,9 +23,25 @@
 
 class Menu{
 public:
+	
+/**
+ *
+ * Prints sub menu asking user what they would like to do with the metadata, 
+ * Creates data manager and uses appropriate method to accomplish task.
+*/
 	void subMenuMD();
+/**
+ *
+ * Prints sub menu asking user what they would like to do with the audio processors, 
+ * Creates Wav and uses appropriate processor to process the wav.
+*/
 	void subMenuAP();
+
 	GenerateCSV generateCSV;
+/**
+ *
+ * Takes Genrate CSV object and calls method generate to generate the CSV.
+*/
 	void createCSV();
 };
 
