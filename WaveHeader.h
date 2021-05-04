@@ -25,7 +25,7 @@
  */
 
 /**
-* Header of wave file containing techincal information
+* Header of wave file containing technical information
 */
 typedef struct wav_header{
 	// RIFF Header

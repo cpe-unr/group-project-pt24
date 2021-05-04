@@ -1,18 +1,9 @@
-/** @file Wav.h
-* @brief Wav class
-*
-* This class contains prototypes and variables used to access and create data for wave files
-*
-* @author Jamie Lee
-* @author Nikhil Sharma
-*/
-
 //Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/27/2021
 
-#ifndef DOXYGEN_WAV_H
-#define DOXYGEN_WAV_H
+#ifndef WAV_H
+#define WAV_H
 
 #include <string>
 #include <cstring>
@@ -20,6 +11,9 @@
 #include <iostream>
 #include "WaveHeader.h"
 
+/** 
+* This is the Wav class that will access and create data for wave files
+*/
 class Wav{
 	unsigned char* buffer = NULL;
 	unsigned short* bufferShort = NULL;
@@ -113,4 +107,4 @@ public:
 	virtual ~Wav();	
 };
 
-#endif //DOXYGEN_WAV_H
+#endif //WAV_H

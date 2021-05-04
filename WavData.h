@@ -6,7 +6,7 @@
 #define WAVDATA_H
 
 /** 
-* This is the WavData class that will be ussed store data of wave files
+* This is the WavData class that will be used store data of wave files
 */
 class WavData{
 	int fileSize, sampleRate, dataBytes;
