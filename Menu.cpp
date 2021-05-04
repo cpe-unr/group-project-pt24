@@ -1,7 +1,6 @@
 #include "Menu.h"
 
 using namespace std;
-namespace fs = experimental::filesystem;
 
 void Menu::subMenuMD() {
 	char cwd[PATH_MAX];
@@ -16,12 +15,13 @@ void Menu::subMenuMD() {
 	cin >> userChoiceMD;
 	switch(userChoiceMD){
 		case 1:{
-			DataManager dataManager(fileDir + chosenFile());
+			Filesystem filesystem;
+			DataManager dataManager(fileDir + filesystem.chosenFile());
 			dataManager.viewMetadata();
 			}
 			break;
 		case 2:	{
-			//editMetaData(chosenFile());	
+			//editMetaData(filesystem.chosenFile());	
 			}
 			break;
 		case 3:	{
@@ -33,11 +33,14 @@ void Menu::subMenuMD() {
 }
 
 void Menu::subMenuAP() {
+	int repeatUserChoice;
+	do {
+	repeatUserChoice = 1;
+	int userChoiceAP;
 	char cwd[PATH_MAX];
 	getcwd(cwd, sizeof(cwd));
 	std::string sfile = "/test/";
         std::string fileDir = cwd+sfile;
-	int userChoiceAP;
 	string newFile = " ";
 	cout << "Please choose from one of the options below" << endl;
 	cout << "1. Normalize" << endl;
@@ -49,7 +52,8 @@ void Menu::subMenuAP() {
 	switch(userChoiceAP){
 		case 1: {
 			Wav wav;
-			wav.readFile(fileDir + chosenFile());
+			Filesystem filesystem;
+			wav.readFile(fileDir + filesystem.chosenFile());
 			if(wav.getBitType() == 16) {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
@@ -59,8 +63,8 @@ void Menu::subMenuAP() {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete normalize;
 			}
 			else {
@@ -70,15 +74,16 @@ void Menu::subMenuAP() {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete normalize;
 			}
 			}
 			break;
 		case 2:	{
 			Wav wav;
-			wav.readFile(fileDir + chosenFile());
+			Filesystem filesystem;
+			wav.readFile(fileDir + filesystem.chosenFile());
 			if(wav.getBitType() == 16) {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
@@ -88,8 +93,8 @@ void Menu::subMenuAP() {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete noise;
 			}
 			else {
@@ -99,15 +104,16 @@ void Menu::subMenuAP() {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete noise;
 			}
 			}
 			break;
 		case 3: {
 			Wav wav;
-			wav.readFile(fileDir + chosenFile());
+			Filesystem filesystem;
+			wav.readFile(fileDir + filesystem.chosenFile());
 			if(wav.getBitType() == 16) {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
@@ -117,8 +123,8 @@ void Menu::subMenuAP() {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete processor;
 			}
 			else {
@@ -128,15 +134,16 @@ void Menu::subMenuAP() {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete processor;
 			}
 			}
 			break;
 		case 4: {
 			Wav wav;
-			wav.readFile(fileDir + chosenFile());
+			Filesystem filesystem;
+			wav.readFile(fileDir + filesystem.chosenFile());
 			if(wav.getBitType() == 16) {
 				short int vIn = wav.getBitType();
 				int vOut = int(vIn);
@@ -146,8 +153,8 @@ void Menu::subMenuAP() {
 				cout << "Please enter new file name with a .wav extension at the end" << endl;
 				cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete limit;
 			}
 			else {
@@ -157,8 +164,8 @@ void Menu::subMenuAP() {
 					cout << "Please enter new file name with a .wav extension at the end" << endl;
 					cin >> newFile;
 				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
+				while(filesystem.noneOfTheCurrentFiles(newFile) == false);
+				wav.writeFile(fileDir + newFile);
 				delete limit;
 			}
 			}
@@ -166,6 +173,12 @@ void Menu::subMenuAP() {
 		default:
 			cout << "Please enter a valid option!" << endl;
 	}
+	cout << "Would you like to process again" << endl;
+	cout << "1. Yes" << endl << "2. No" << endl;
+	cin >> repeatUserChoice;
+	}
+	while(repeatUserChoice == 1);
+	
 }
 
 GenerateCSV generateCSV;

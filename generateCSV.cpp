@@ -1,6 +1,7 @@
 #include "generateCSV.h"
 
 using namespace std;
+namespace fs = experimental::filesystem;
 
 void GenerateCSV::generate() {
 	char cwd[PATH_MAX];

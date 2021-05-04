@@ -1,7 +1,7 @@
-audiomanagement: main.cpp wav.o  echo.o wavdata.o mdprint.o data_manager.o
-	g++ -std=c++17 -o audiomanagement main.cpp Wav.cpp Processor.cpp Echo.cpp WavData.cpp DataManager.cpp MetadataPrinter.cpp -lstdc++fs
+audiomanagement: filesystem.o menu.o wav.o  echo.o wavdata.o mdprint.o data_manager.o generatecsv.o main.cpp 
+	g++ -std=c++17 -o audiomanagement generateCSV.cpp Wav.cpp MetadataPrinter.cpp WavData.cpp DataManager.cpp Filesystem.cpp Menu.cpp main.cpp -lstdc++fs
 main.o: main.cpp
-	g++ -std=c++17 main.cpp -lstdc++fs
+	g++ -std=c++17 main.cpp
 wav.o: Wav.cpp Wav.h
 	g++ -c -std=c++17 Wav.cpp
 limiter.o: Limiter.cpp Limiter.h
@@ -18,5 +18,11 @@ mdprint.o: MetadataPrinter.cpp MetadataPrinter.h
 	g++ -c -std=c++17 MetadataPrinter.cpp
 data_manager.o: DataManager.cpp DataManager.h
 	g++ -c -std=c++17 DataManager.cpp
+menu.o: Menu.cpp Menu.h
+	g++ -c -std=c++17 Menu.cpp
+generatecsv.o: generateCSV.cpp generateCSV.h
+	g++ -c -std=c++17 generateCSV.cpp
+filesystem.o: Filesystem.cpp Filesystem.h
+	g++ -c -std=c++17 Filesystem.cpp
 clean:
 	rm *.o audiomanagement *.wav *.csv

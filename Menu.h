@@ -1,7 +1,17 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <iostream>
+#include <fstream>
+#include <experimental/filesystem>
+#include <string>
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
+#include <vector>
+
 #include "generateCSV.h"
+#include "Filesystem.h"
 #include "Wav.h"
 #include "Processor.h"
 #include "Limiter.h"
@@ -13,8 +23,6 @@
 
 class Menu{
 public:
-	Menu();
-
 	void subMenuMD();
 	void subMenuAP();
 	GenerateCSV generateCSV;
@@ -22,4 +30,4 @@ public:
 };
 
 
-#endif
+#endif //MENU_F

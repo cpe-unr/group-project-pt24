@@ -14,15 +14,6 @@
 #include <vector>
 
 #include "Menu.h"
-//#include "Wav.h"
-//#include "Processor.h"
-//#include "Limiter.h"
-//#include "Echo.h"
-//#include "NoiseGate.h"
-//#include "Normalize.h"
-//#include "WaveHeader.h"
-//#include "WavData.h"
-//#include "DataManager.h"
 
 using namespace std;
 
@@ -71,42 +62,13 @@ int main() {
 			menu.subMenuAP();	
 			}
 			break;
-		case 3:
+		case 3: {
 			Menu menu;
 			menu.createCSV();
+			}
 			break;
 		default:
 			cout << "Please enter a valid option!" << endl;
 	}
 	return 0;
-}
-bool noneOfTheCurrentFiles(string newFile) {
-	vector<string> filenames;
-        for(auto& p: fs::directory_iterator("test")) {
-	filenames.emplace_back(p.path().filename());
-	}
-	for(auto item: filenames) {
-	if(newFile == item) {
-		return false;
-	}
-	}
-	return true;
-}
-string chosenFile() {
-	int fileIndex;
-	vector<string> filenames;
-	string chosenFile = " ";
-	do {
-	int counter = 1;
-	cout << "Please choose from the files below." << endl;
-        for(auto& p: fs::directory_iterator("test")) {
-        std::cout << counter << ". " << p.path().filename() << '\n';
-	filenames.emplace_back(p.path().filename());
-	counter++;
-	}
-	cin >> fileIndex;
-	}
-	while (fileIndex > 4 || fileIndex < 1); //Trying to adhere this to SOLID principles. Tho, vector.size doesn't work properly.
-	chosenFile = filenames[fileIndex - 1];
-	return chosenFile;
 }
