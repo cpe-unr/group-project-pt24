@@ -8,7 +8,7 @@ void Menu::subMenuMD() {
 	std::string sfile = "/test/";
         std::string fileDir = cwd+sfile;
 	int userChoiceMD;
-	char userTitle[50], userArtist[50], userComments[50];
+	//char userTitle[50], userArtist[50], userComments[50];
 	cout << "Please choose from one of the options below" << endl;
 	cout << "1. View metaData" << endl;
 	cout << "2. Modify metadata" << endl;
@@ -23,7 +23,7 @@ void Menu::subMenuMD() {
 			break;
 		case 2:	{
 			/*Filesystem filesystem;
-			Wav wav;
+			DataManager dataManager(fileDir + filesystem.chosenFile());
 			
 			cout << "Enter new title: " << endl;
 			cin >> userTitle;
@@ -31,13 +31,10 @@ void Menu::subMenuMD() {
 			cin >> userArtist;
 			cout << "Enter new comments: " << endl;
 			cin >> userComments;
+	
+			cout << "-----Confirm choice-----" << endl;
 			
-			
-			
-			cout << "---Confirm choice---" << endl;
-			
-			/*DataManager dataManager;
-			dataManager.editMetadata(fileDir + filesystem.chosenFile(), userTitle, userArtist, userComments);*/	
+			//dataManager.editMetadata(fileDir + filesystem.chosenFile(), userTitle, userArtist, userComments);*/	
 			}
 			break;
 		case 3:	{
