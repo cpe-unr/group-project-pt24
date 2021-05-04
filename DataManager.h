@@ -1,18 +1,9 @@
-/** @file WavData.h
-* @brief DataManager class
-*
-* This class contains prototypes and variables used manage data of wave files
-*
-* @author Jamie Lee
-* @author Nikhil Sharma
-*/
-
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/30/2021
 
-#ifndef DOXYGEN_DATAMANAGER_H
-#define DOXYGEN_DATAMANAGER_H
+#ifndef DATAMANAGER_H
+#define DATAMANAGER_H
 
 #include <iostream>
 #include <fstream>
@@ -24,18 +15,22 @@
 #include "MetadataPrinter.h"
 #include "ModifyMD.h"
 
+/**
+* This is the DataManager class that will manage data of wave files.
+* Managing includes loading in wave file info, printing metadata, and editing metadata
+*/
 class DataManager{
 	Wav wav;
 	wav_header waveHeader;
 	std::vector<WavData> dataList;
 public:
 	/**
-	* Default constructor
+	* Default constructor of DataManager
 	*/
 	DataManager();
 	/**
-	* Parameterized constructor to take in filename of wave file
-	* it will load in the data from the specified wave file
+	* Parameterized constructor to take in filename of wave file.
+	* It will load in the data/info from the specified wave file
 	* @param filename - name of wave file
 	*/
 	DataManager(std::string filename);
@@ -61,4 +56,4 @@ public:
 	void editMetadata(std::string filename, char* title, char* artist, char* comments);
 };
 
-#endif //DOXYGEN_DATAMANAGER_H
+#endif //DATAMANAGER_H

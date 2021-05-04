@@ -1,13 +1,4 @@
-/** @file MetadataPrinter.h
-* @brief MetadataPrinter class
-*
-* This class contains a function used to print metadata of wave files
-*
-* @author Jamie Lee
-* @author Nikhil Sharma
-*/
-
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //5/01/2021
 
@@ -18,6 +9,9 @@
 #include <vector>
 #include "WavData.h"
 
+/** 
+* This is the MetadataPrinter class that will print the metadata of wave files
+*/
 class MetadataPrinter{
 public:
 	/**
@@ -27,4 +21,4 @@ public:
 	void printMetadata(std::vector<WavData> data);
 };
 
-#endif
+#endif //METADATAPRINTER_H

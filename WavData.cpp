@@ -1,4 +1,4 @@
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/30/2021
 

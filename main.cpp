@@ -1,6 +1,6 @@
 /** @file */
 
-//Authors: Samuel DeLange, Jamie Lee, Nikhil Sharma
+//Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/22/2021
 

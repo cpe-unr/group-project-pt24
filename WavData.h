@@ -1,26 +1,20 @@
-/** @file WavData.h
-* @brief WavData class
-*
-* This class contains prototypes and variables used store data of wave files
-*
-* @author Jamie Lee
-* @author Nikhil Sharma
-*/
-
 //Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/30/2021
 
-#ifndef DOXYGEN_WAVDATA_H
-#define DOXYGEN_WAVDATA_H
+#ifndef WAVDATA_H
+#define WAVDATA_H
 
+/** 
+* This is the WavData class that will be ussed store data of wave files
+*/
 class WavData{
 	int fileSize, sampleRate, dataBytes;
 	short int audioFormat, numChannels, bitsPerSample;
 	char *title, *artist, *comments;
 public:
 /**
-* Default constructor
+* Default constructor of WavData
 */
 	WavData();
 /**
@@ -138,4 +132,4 @@ public:
 	void setComments(char* newComments);
 };
 
-#endif //DOXYGEN_WAVDATA_H
+#endif //WAVDATA_H

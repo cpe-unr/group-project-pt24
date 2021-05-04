@@ -1,18 +1,9 @@
-/** @file WavHeader.h
-* @brief Header and metadata for wave files
-*
-* These structs take in header and metadata info of wave files
-*
-* @author Jamie Lee
-* @author Nikhil Sharma
-*/
-
 //Authors: Jamie Lee, Nikhil Sharma
 //Group Project
 //4/27/2021
 
-#ifndef DOXYGEN_WAVEHEADER_H
-#define DOXYGEN_WAVEHEADER_H
+#ifndef WAVEHEADER_H
+#define WAVEHEADER_H
 
 // wav_header copied from https://gist.github.com/Jon-Schneider/8b7c53d27a7a13346a643dac9c19d34f
 /*
@@ -93,4 +84,4 @@ typedef struct ICMT_data{
 	//char ICMT_data[];
 } ICMT_data;
 
-#endif //DOXYGEN_WAVEHEADER_H
+#endif //WAVEHEADER_H
