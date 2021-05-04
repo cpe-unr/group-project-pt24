@@ -13,24 +13,20 @@
 #include <limits.h>
 #include <vector>
 
-#include "Wav.h"
-#include "Processor.h"
-#include "Limiter.h"
-#include "Echo.h"
-#include "NoiseGate.h"
-#include "Normalize.h"
-#include "WaveHeader.h"
-#include "WavData.h"
-#include "DataManager.h"
+#include "Menu.h"
+//#include "Wav.h"
+//#include "Processor.h"
+//#include "Limiter.h"
+//#include "Echo.h"
+//#include "NoiseGate.h"
+//#include "Normalize.h"
+//#include "WaveHeader.h"
+//#include "WavData.h"
+//#include "DataManager.h"
 
 using namespace std;
-namespace fs = experimental::filesystem;
 
-void subMenuMD();
-void subMenuAP();
-void createCSV();
-bool noneOfTheCurrentFiles(string newFile);
-string chosenFile();
+
 /**
  * \brief   The function bar.
  *
@@ -65,202 +61,25 @@ int main() {
 	cin >> userChoice;
 	
 	switch(userChoice){
-		case 1:
-			subMenuMD();
+		case 1: {
+			Menu menu;
+			menu.subMenuMD();
+			}
 			break;
-		case 2:	
-			subMenuAP();	
+		case 2:	{
+			Menu menu;
+			menu.subMenuAP();	
+			}
 			break;
 		case 3:
-			createCSV();
+			Menu menu;
+			menu.createCSV();
 			break;
 		default:
 			cout << "Please enter a valid option!" << endl;
 	}
 	return 0;
 }
-void subMenuMD() {
-	char cwd[PATH_MAX];
-	getcwd(cwd, sizeof(cwd));
-	std::string sfile = "/test/";
-        std::string fileDir = cwd+sfile;
-	int userChoiceMD;
-	cout << "Please choose from one of the options below" << endl;
-	cout << "1. View metaData" << endl;
-	cout << "2. Modify metadata" << endl;
-	cout << "3. Exit" << endl;
-	cin >> userChoiceMD;
-	switch(userChoiceMD){
-		case 1:{
-			DataManager dataManager(fileDir + chosenFile());
-			dataManager.viewMetadata();
-			}
-			break;
-		case 2:	{
-			//editMetaData(chosenFile());	
-			}
-			break;
-		case 3:	{
-			}
-			break;
-		default:
-			cout << "Please enter a valid option!" << endl;
-	}
-}
-void subMenuAP() {
-	char cwd[PATH_MAX];
-	getcwd(cwd, sizeof(cwd));
-	std::string sfile = "/test/";
-        std::string fileDir = cwd+sfile;
-	int userChoiceAP;
-	string newFile = " ";
-	cout << "Please choose from one of the options below" << endl;
-	cout << "1. Normalize" << endl;
-	cout << "2. Noise Gate" << endl;
-	cout << "3. Echo" << endl;
-	cout << "4. Limit" << endl;
-	cout << "5. Exit" << endl;
-	cin >> userChoiceAP;
-	switch(userChoiceAP){
-		case 1: {
-			Wav wav;
-			wav.readFile(fileDir + chosenFile());
-			if(wav.getBitType() == 16) {
-				short int vIn = wav.getBitType();
-				int vOut = int(vIn);
-				Processor<unsigned short> *normalize = new Normalize<unsigned short>();
-				normalize->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
-				do {
-				cout << "Please enter new file name with a .wav extension at the end" << endl;
-				cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete normalize;
-			}
-			else {
-				Processor<unsigned char> *normalize = new Normalize<unsigned char>();
-				normalize->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
-				do {
-					cout << "Please enter new file name with a .wav extension at the end" << endl;
-					cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete normalize;
-			}
-			}
-			break;
-		case 2:	{
-			Wav wav;
-			wav.readFile(fileDir + chosenFile());
-			if(wav.getBitType() == 16) {
-				short int vIn = wav.getBitType();
-				int vOut = int(vIn);
-				Processor<unsigned short> *noise = new NoiseGate<unsigned short>(6400);
-				noise->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
-				do {
-				cout << "Please enter new file name with a .wav extension at the end" << endl;
-				cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete noise;
-			}
-			else {
-				Processor<unsigned char> *noise = new NoiseGate<unsigned char>(25);
-				noise->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
-				do {
-					cout << "Please enter new file name with a .wav extension at the end" << endl;
-					cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete noise;
-			}
-			}
-			break;
-		case 3: {
-			Wav wav;
-			wav.readFile(fileDir + chosenFile());
-			if(wav.getBitType() == 16) {
-				short int vIn = wav.getBitType();
-				int vOut = int(vIn);
-				Processor<unsigned short> *processor = new Echo<unsigned short>(256000);
-				processor->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
-				do {
-				cout << "Please enter new file name with a .wav extension at the end" << endl;
-				cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete processor;
-			}
-			else {
-				Processor<unsigned char> *processor = new Echo<unsigned char>(32000);
-				processor->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
-				do {
-					cout << "Please enter new file name with a .wav extension at the end" << endl;
-					cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete processor;
-			}
-			}
-			break;
-		case 4: {
-			Wav wav;
-			wav.readFile(fileDir + chosenFile());
-			if(wav.getBitType() == 16) {
-				short int vIn = wav.getBitType();
-				int vOut = int(vIn);
-				Processor<unsigned short> *limit = new Limiter<unsigned short>();
-				limit->processBuffer(wav.getBufferShort(), wav.getBufferSize(), vOut, wav.getNumChannels());
-				do {
-				cout << "Please enter new file name with a .wav extension at the end" << endl;
-				cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete limit;
-			}
-			else {
-				Processor<unsigned char> *limit = new Limiter<unsigned char>();
-				limit->processBuffer(wav.getBuffer(), wav.getBufferSize(), wav.getBitType(), wav.getNumChannels());
-				do {
-					cout << "Please enter new file name with a .wav extension at the end" << endl;
-					cin >> newFile;
-				}
-				while(noneOfTheCurrentFiles(newFile) == false);
-				wav.writeFile(newFile);
-				delete limit;
-			}
-			}
-			break;
-		default:
-			cout << "Please enter a valid option!" << endl;
-	}
-}
-void createCSV() {
-	char cwd[PATH_MAX];
-	getcwd(cwd, sizeof(cwd));
-	std::string sfile = "/test/";
-        std::string fileDir = cwd+sfile;
-	vector<string> filenames;
-	std::ofstream myfile;
-	myfile.open("generatedCSV.csv");
-	for(auto& p: fs::directory_iterator("test")) {
-	filenames.emplace_back(p.path().filename());
-	}
-	for(vector<string>::const_iterator i = filenames.begin(); i != filenames.end(); ++i) {
-		Wav wav;
-		wav.readFile(fileDir + *i);
-		myfile << wav.waveHeader.wav_size << "," << wav.waveHeader.sample_rate << "," << wav.waveHeader.data_bytes << "," << wav.waveHeader.audio_format << "," << wav.waveHeader.num_channels << "," << wav.waveHeader.bit_depth <</* "," << wav.waveHeader.list_header[0] << "," << wav.waveHeader.list_header[1] << "," << wav.waveHeader.list_header[2]*/"\n";
-	}
-	myfile.close();
-}
-
 bool noneOfTheCurrentFiles(string newFile) {
 	vector<string> filenames;
         for(auto& p: fs::directory_iterator("test")) {
