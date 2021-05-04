@@ -29,7 +29,7 @@ string Filesystem::chosenFile() {
 	}
 	cin >> fileIndex;
 	}
-	while (fileIndex > 4 || fileIndex < 1); //Trying to adhere this to SOLID principles. Tho, vector.size doesn't work properly.
+	while (fileIndex > filenames.size() || fileIndex < 1); //Trying to adhere this to SOLID principles. Tho, vector.size doesn't work properly.
 	chosenFile = filenames[fileIndex - 1];
 	return chosenFile;
 }

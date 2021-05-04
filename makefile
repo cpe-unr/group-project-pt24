@@ -25,4 +25,4 @@ generatecsv.o: generateCSV.cpp generateCSV.h
 filesystem.o: Filesystem.cpp Filesystem.h
 	g++ -c -std=c++17 Filesystem.cpp
 clean:
-	rm *.o audiomanagement *.wav *.csv
+	rm *.o audiomanagement *.csv

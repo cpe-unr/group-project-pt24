@@ -17,7 +17,13 @@ void GenerateCSV::generate() {
 	for(vector<string>::const_iterator i = filenames.begin(); i != filenames.end(); ++i) {
 		Wav wav;
 		wav.readFile(fileDir + *i);
-		myfile << wav.waveHeader.wav_size << "," << wav.waveHeader.sample_rate << "," << wav.waveHeader.data_bytes << "," << wav.waveHeader.audio_format << "," << wav.waveHeader.num_channels << "," << wav.waveHeader.bit_depth <</* "," << wav.waveHeader.list_header[0] << "," << wav.waveHeader.list_header[1] << "," << wav.waveHeader.list_header[2]*/"\n";
+		char *c = wav.getArtist();
+		if(c[0] == '\0') {
+		myfile << wav.waveHeader.wav_size << "," << wav.waveHeader.sample_rate << "," << wav.waveHeader.data_bytes << "," << wav.waveHeader.audio_format << "," << wav.waveHeader.num_channels << "," << wav.waveHeader.bit_depth << "," << " " << "," << " " << "," << "No metadata present" << "\n";
+		}
+		else {
+		myfile << wav.waveHeader.wav_size << "," << wav.waveHeader.sample_rate << "," << wav.waveHeader.data_bytes << "," << wav.waveHeader.audio_format << "," << wav.waveHeader.num_channels << "," << wav.waveHeader.bit_depth << "," << wav.getTitle() << "," << wav.getArtist() << "," << wav.getComments() << "\n";
+		}
 	}
 	myfile.close();
 }
