@@ -8,7 +8,7 @@ using namespace std;
 
 void ModifyMD::writeNewMetadata(string filename, char* newTitle, char* newArtist, char* newComments){
 	/*ofstream outFile(filename, ios::out | ios::binary);
-	outFile.seekp(wav.getBufferSize + 44, ios::beg);
+	outFile.seekp(wav.getBufferSize() + 44, ios::beg);
 	metadata_header Metadata;
 	outFile.write((char*)&Metadata, sizeof(metadata_header)); 
 	
@@ -23,10 +23,8 @@ void ModifyMD::writeNewMetadata(string filename, char* newTitle, char* newArtist
 }
 
 void ModifyMD::writeChunk(ofstream &stream, char* subChunk, char* data){
-	/*for(string &x : subChunk){
-		int index = 0;
-		stream.write(&subChunk[index], sizeof(subChunk[index]));
-		stream.write((char*)data[index].size(), sizeof(int));
-		stream.write(&data[index], data[index].size());
-	}*/
+	/*stream.write(subChunk, sizeof(subChunk));
+	stream.write((char*)sizeof(data), sizeof(int));
+	stream.write(data, sizeof(data));
+	*/
 }
